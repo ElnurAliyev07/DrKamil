@@ -1,0 +1,364 @@
+{% load static %}
+{% load i18n %}
+
+<div style="background-color: #FFF8F0;">
+
+    <div class="hero-section">
+        {% if hero_section %}
+        <h1 class="title split-title wow fadeInUp"
+              data-wow-delay="0.2s"
+              data-wow-duration="0.8s">{{ hero_section.title }}</h1>
+        <p style="color: #000;" class="wow fadeInUp">{{ hero_section.subtitle }}</p>
+        {% else %}
+        <h1 class="title split-title wow fadeInUp"
+              data-wow-delay="0.2s"
+              data-wow-duration="0.8s" >Niyə Dr. Kamil Cəfərov?</h1>
+        <p style="color: #000;" class="wow fadeInUp">Müraciət etməyiniz üçün səbəb siyahısı</p>
+        {% endif %}
+        <a
+          href="{% url 'rhinoplastica' %}"
+          class="btn btn-lg btn-icon btn-rounded btn-secondary btn-style1 wow fadeInUp"
+          data-wow-delay="0.6s"
+          data-wow-duration="0.8s"
+        >
+          Xidmətlər
+          <span class="right-icon">
+            <svg
+              width="22"
+              height="16"
+              viewBox="0 0 22 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.4545 15.4999C12.3311 15.5024 12.2067 15.4709 12.0969 15.3998C11.7802 15.1953 11.6838 14.7514 11.8743 14.4197C11.8903 14.3904 13.8809 10.9078 17.6807 8.71607H0.681818C0.305795 8.71607 0 8.39547 0 8.00124C0 7.607 0.305795 7.2864 0.681818 7.2864H17.6807C13.902 5.10722 11.889 1.60917 11.8692 1.57415C11.6827 1.24032 11.786 0.796048 12.1041 0.598396C12.4266 0.397885 12.8514 0.514045 13.044 0.85395C13.3539 1.37221 16.2598 6.01828 21.4719 7.30391C21.7839 7.38433 22 7.67062 22 8.00159C22 8.33256 21.7852 8.61957 21.4777 8.69784C16.2434 9.98812 13.3474 14.6403 13.0344 15.1668C12.9117 15.373 12.6847 15.4952 12.4545 15.4999Z"
+                fill="black"
+              />
+            </svg>
+          </span>
+        </a>
+    </div>
+
+    <div class="carousel-wrapper mdw-curved-slider" style="--min-height: 380px;">
+        <div class="elementor-widget-image-gallery">
+            {% if hero_section.images.exists %}
+                {% for image in hero_section.images.all %}
+                    <div class="gallery-item">
+                        <img src="{{ image.image.url }}" alt="{{ image.image.name }}">
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600" alt="Beauty 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600" alt="Beauty 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600" alt="Beauty 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600" alt="Beauty 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600" alt="Beauty 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600" alt="Beauty 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600" alt="Beauty 7">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div style="background-color: #FFF8F0;" class="info-section">
+        {% if hero_contents.exists %}
+            {% for content in hero_contents %}
+                <div style="background-color: #FFF8F0;" class="info-card">
+                    <h3 style="color: #000;" class="title split-title wow fadeInUp"
+              data-wow-delay="0.2s"
+              data-wow-duration="0.8s">{{ content.title }}</h3>
+                    <p style="color: #000;" class="wow fadeInUp">{{ content.subtitle }}</p>
+                    {% if content.button_url %}
+                        <a
+          href="{{ content.button_url }}"
+          class="btn btn-lg btn-icon btn-rounded btn-secondary btn-style1 btn-smaller wow fadeInUp"
+          data-wow-delay="0.6s"
+          data-wow-duration="0.8s"
+        >
+          Ətraflı
+          <span class="right-icon smaller-icon">
+            <svg
+              width="22"
+              height="16"
+              viewBox="0 0 22 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.4545 15.4999C12.3311 15.5024 12.2067 15.4709 12.0969 15.3998C11.7802 15.1953 11.6838 14.7514 11.8743 14.4197C11.8903 14.3904 13.8809 10.9078 17.6807 8.71607H0.681818C0.305795 8.71607 0 8.39547 0 8.00124C0 7.607 0.305795 7.2864 0.681818 7.2864H17.6807C13.902 5.10722 11.889 1.60917 11.8692 1.57415C11.6827 1.24032 11.786 0.796048 12.1041 0.598396C12.4266 0.397885 12.8514 0.514045 13.044 0.85395C13.3539 1.37221 16.2598 6.01828 21.4719 7.30391C21.7839 7.38433 22 7.67062 22 8.00159C22 8.33256 21.7852 8.61957 21.4777 8.69784C16.2434 9.98812 13.3474 14.6403 13.0344 15.1668C12.9117 15.373 12.6847 15.4952 12.4545 15.4999Z"
+                fill="black"
+              />
+            </svg>
+          </span>
+        </a>
+                    {% else %}
+                        <a
+          href="{% url 'about' %}"
+          class="btn btn-lg btn-icon btn-rounded btn-secondary btn-style1 btn-smaller wow fadeInUp"
+          data-wow-delay="0.6s"
+          data-wow-duration="0.8s"
+        >
+          Ətraflı
+          <span class="right-icon smaller-icon">
+            <svg
+              width="22"
+              height="16"
+              viewBox="0 0 22 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.4545 15.4999C12.3311 15.5024 12.2067 15.4709 12.0969 15.3998C11.7802 15.1953 11.6838 14.7514 11.8743 14.4197C11.8903 14.3904 13.8809 10.9078 17.6807 8.71607H0.681818C0.305795 8.71607 0 8.39547 0 8.00124C0 7.607 0.305795 7.2864 0.681818 7.2864H17.6807C13.902 5.10722 11.889 1.60917 11.8692 1.57415C11.6827 1.24032 11.786 0.796048 12.1041 0.598396C12.4266 0.397885 12.8514 0.514045 13.044 0.85395C13.3539 1.37221 16.2598 6.01828 21.4719 7.30391C21.7839 7.38433 22 7.67062 22 8.00159C22 8.33256 21.7852 8.61957 21.4777 8.69784C16.2434 9.98812 13.3474 14.6403 13.0344 15.1668C12.9117 15.373 12.6847 15.4952 12.4545 15.4999Z"
+                fill="black"
+              />
+            </svg>
+          </span>
+        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <div style="background-color: #FFF8F0;" class="info-card">
+                <h3 style="color: #000;" class="title split-title wow fadeInUp"
+              data-wow-delay="0.2s"
+              data-wow-duration="0.8s" >Niyə Dr. Kamil Cəfərov?</h3>
+                <p style="color: #000;" class="wow fadeInUp">Rinoplastika əməliyyatı üçün ən yüksək akkreditasiya</p>
+               <a
+    href="{% url 'about' %}"
+    class="btn btn-lg btn-icon btn-rounded btn-secondary btn-style1 btn-smaller wow fadeInUp"
+    data-wow-delay="0.6s"
+    data-wow-duration="0.8s"
+>
+    Ətraflı
+    <span class="right-icon smaller-icon">
+        <svg
+            width="22"
+            height="16"
+            viewBox="0 0 22 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M12.4545 15.4999C12.3311 15.5024 12.2067 15.4709 12.0969 15.3998C11.7802 15.1953 11.6838 14.7514 11.8743 14.4197C11.8903 14.3904 13.8809 10.9078 17.6807 8.71607H0.681818C0.305795 8.71607 0 8.39547 0 8.00124C0 7.607 0.305795 7.2864 0.681818 7.2864H17.6807C13.902 5.10722 11.889 1.60917 11.8692 1.57415C11.6827 1.24032 11.786 0.796048 12.1041 0.598396C12.4266 0.397885 12.8514 0.514045 13.044 0.85395C13.3539 1.37221 16.2598 6.01828 21.4719 7.30391C21.7839 7.38433 22 7.67062 22 8.00159C22 8.33256 21.7852 8.61957 21.4777 8.69784C16.2434 9.98812 13.3474 14.6403 13.0344 15.1668C12.9117 15.373 12.6847 15.4952 12.4545 15.4999Z"
+                fill="black"
+            />
+        </svg>
+    </span>
+</a>
+
+            </div>
+            <div style="background-color: #FFF8F0;" class="info-card">
+                <h3 style="color: #000;" class="title split-title wow fadeInUp"
+              data-wow-delay="0.2s"
+              data-wow-duration="0.8s">Təcrübə və Peşəkarlıq</h3>
+                <p style="color: #000;" class="wow fadeInUp">10 ildən artıq beynəlxalq təcrübə</p>
+                <a
+          href="{% url 'about' %}"
+          class="btn btn-lg btn-icon btn-rounded btn-secondary btn-style1 btn-smaller wow fadeInUp"
+          data-wow-delay="0.6s"
+          data-wow-duration="0.8s"
+        >
+          Ətraflı
+          <span class="right-icon smaller-icon">
+            <svg
+              width="22"
+              height="16"
+              viewBox="0 0 22 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.4545 15.4999C12.3311 15.5024 12.2067 15.4709 12.0969 15.3998C11.7802 15.1953 11.6838 14.7514 11.8743 14.4197C11.8903 14.3904 13.8809 10.9078 17.6807 8.71607H0.681818C0.305795 8.71607 0 8.39547 0 8.00124C0 7.607 0.305795 7.2864 0.681818 7.2864H17.6807C13.902 5.10722 11.889 1.60917 11.8692 1.57415C11.6827 1.24032 11.786 0.796048 12.1041 0.598396C12.4266 0.397885 12.8514 0.514045 13.044 0.85395C13.3539 1.37221 16.2598 6.01828 21.4719 7.30391C21.7839 7.38433 22 7.67062 22 8.00159C22 8.33256 21.7852 8.61957 21.4777 8.69784C16.2434 9.98812 13.3474 14.6403 13.0344 15.1668C12.9117 15.373 12.6847 15.4952 12.4545 15.4999Z"
+                fill="black"
+              />
+            </svg>
+          </span>
+        </a>
+            </div>
+            <div style="background-color: #FFF8F0;" class="info-card">
+                <h3 style="color: #000;" class="title split-title wow fadeInUp"
+              data-wow-delay="0.2s"
+              data-wow-duration="0.8s">Pasiyent məmnuniyyəti</h3>
+                <p style="color: #000;" class="wow fadeInUp">Ən yüksək pasiyent razılığı göstəriciləri</p>
+                <a
+          href="{% url 'about' %}"
+          class="btn btn-lg btn-icon btn-rounded btn-secondary btn-style1 btn-smaller wow fadeInUp"
+          data-wow-delay="0.6s"
+          data-wow-duration="0.8s"
+        >
+          Ətraflı
+          <span class="right-icon smaller-icon">
+            <svg
+              width="22"
+              height="16"
+              viewBox="0 0 22 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.4545 15.4999C12.3311 15.5024 12.2067 15.4709 12.0969 15.3998C11.7802 15.1953 11.6838 14.7514 11.8743 14.4197C11.8903 14.3904 13.8809 10.9078 17.6807 8.71607H0.681818C0.305795 8.71607 0 8.39547 0 8.00124C0 7.607 0.305795 7.2864 0.681818 7.2864H17.6807C13.902 5.10722 11.889 1.60917 11.8692 1.57415C11.6827 1.24032 11.786 0.796048 12.1041 0.598396C12.4266 0.397885 12.8514 0.514045 13.044 0.85395C13.3539 1.37221 16.2598 6.01828 21.4719 7.30391C21.7839 7.38433 22 7.67062 22 8.00159C22 8.33256 21.7852 8.61957 21.4777 8.69784C16.2434 9.98812 13.3474 14.6403 13.0344 15.1668C12.9117 15.373 12.6847 15.4952 12.4545 15.4999Z"
+                fill="black"
+              />
+            </svg>
+          </span>
+        </a>
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+<!-- HTML-ə əlavə et (info-section div-dən əvvəl) --><!-- HTML-ə əlavə et (info-section div-dən əvvəl) -->
+<style>
+  .btn-smaller {
+    padding: 10px 40px 10px 20px !important; /* btn-lg padding-ini azaldır */
+    font-size: 0.9rem !important;      /* yazını kiçildir */
+}
+.smaller-icon {
+    width: 40px !important;   /* SVG enini kiçildir */
+    height: 40px !important;  /* SVG hündürlüyünü kiçildir */
+}
+@media (max-width: 768px) {
+    .info-section {
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 15px !important;
+        padding: 20px 15px 50px 15px !important;
+        scrollbar-width: none !important;
+        scroll-behavior: smooth !important;
+        position: relative !important;
+    }
+    
+    .info-section::-webkit-scrollbar {
+        display: none !important;
+    }
+    
+    .info-section .info-card {
+        min-width: 90% !important;
+        max-width: 90% !important;
+        scroll-snap-align: start !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .slider-dots {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        margin-top: 20px !important;
+        padding-bottom: 20px !important;
+    }
+    
+    .slider-dot {
+        width: 8px !important;
+        height: 8px !important;
+        border-radius: 50% !important;
+        background-color: #ddd !important;
+        transition: all 0.3s ease !important;
+        cursor: pointer !important;
+    }
+    
+    .slider-dot.active {
+        background-color: #000 !important;
+        width: 24px !important;
+        border-radius: 4px !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .slider-dots {
+        display: none !important;
+    }
+}
+</style>
+
+<!-- JavaScript - body tag-dən əvvəl əlavə et -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const infoSection = document.querySelector('.info-section');
+    
+    if (infoSection && window.innerWidth <= 768) {
+        const cards = infoSection.querySelectorAll('.info-card');
+        const dotsContainer = document.createElement('div');
+        dotsContainer.className = 'slider-dots';
+        
+        // Nöqtələri yarat
+        cards.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.className = 'slider-dot';
+            if (index === 0) dot.classList.add('active');
+            dotsContainer.appendChild(dot);
+        });
+        
+        infoSection.parentElement.appendChild(dotsContainer);
+        
+        const dots = dotsContainer.querySelectorAll('.slider-dot');
+        
+        // Nöqtəyə klik edəndə slide et
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                const cardWidth = cards[0].offsetWidth + 15; // card width + gap
+                infoSection.scrollTo({
+                    left: cardWidth * index,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Scroll zamanı aktiv nöqtəni dəyiş
+        infoSection.addEventListener('scroll', () => {
+            const scrollLeft = infoSection.scrollLeft;
+            const cardWidth = cards[0].offsetWidth + 15; // card width + gap
+            const activeIndex = Math.round(scrollLeft / cardWidth);
+            
+            dots.forEach((dot, index) => {
+                if (index === activeIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        });
+        
+        // Mouse drag funksiyası
+        let isDown = false;
+        let startX;
+        let scrollLeftStart;
+
+        infoSection.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - infoSection.offsetLeft;
+            scrollLeftStart = infoSection.scrollLeft;
+        });
+
+        infoSection.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+
+        infoSection.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+
+        infoSection.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - infoSection.offsetLeft;
+            const walk = (x - startX) * 2;
+            infoSection.scrollLeft = scrollLeftStart - walk;
+        });
+    }
+});
+</script>

@@ -1,0 +1,205 @@
+{% load static %}
+
+<section class="content-inner-6">
+		<div class="container bg-text position4" data-text="{% if blog.main_word %}{{ blog.main_word }}{% else %}Latest Blog{% endif %}">
+			<div class="row align-items-center justify-content-between">
+				<div class="col-12 col-lg-4 col-xl-4 m-b30 position-relative">
+					<div class="row">
+						<div class="col-12">
+							<div class="section-head style-8">
+								{% if blog %}
+								<h2 class="title split-title">{{ blog.title }}</h2>
+								<p class="wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.8s">{{ blog.description }}</p>
+								{% else %}
+								<h2 class="title split-title">Before Plastic Surgery Key Things to Know</h2>
+								<p class="wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.8s">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+								{% endif %}
+							</div>
+						</div>
+						
+						<div class="col-12">
+							<div class="service-pagination style-2 d-flex align-items-center">
+								<div class="service-button-prev">
+									<svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M13.8843 21.9998C14.0638 22.0035 14.2448 21.9573 14.4045 21.853C14.8651 21.5532 15.0055 20.9021 14.7283 20.4156C14.705 20.3726 11.8096 15.2647 6.28264 12.0502H31.0083C31.5552 12.0502 32 11.58 32 11.0018C32 10.4236 31.5552 9.95339 31.0083 9.95339H6.28264C11.7788 6.75726 14.7069 1.62679 14.7357 1.57542C15.0069 1.0858 14.8567 0.434204 14.394 0.144314C13.925 -0.149769 13.3071 0.0206 13.0269 0.519126C12.5762 1.27924 8.34942 8.09348 0.768099 9.97907C0.31438 10.097 0 10.5169 0 11.0023C0 11.4878 0.312398 11.9087 0.75967 12.0235C8.37322 13.9159 12.5856 20.7391 13.0408 21.5112C13.2193 21.8137 13.5496 21.993 13.8843 21.9998Z" fill="black"/>
+									</svg>
+								</div>
+								<div class="service-button-next">
+									<svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M18.1157 21.9998C17.9362 22.0035 17.7552 21.9573 17.5955 21.853C17.1349 21.5532 16.9945 20.9021 17.2717 20.4156C17.295 20.3726 20.1904 15.2647 25.7174 12.0502H0.991735C0.444793 12.0502 0 11.58 0 11.0018C0 10.4236 0.444793 9.95339 0.991735 9.95339H25.7174C20.2212 6.75726 17.2931 1.62679 17.2643 1.57542C16.9931 1.0858 17.1433 0.434204 17.606 0.144314C18.075 -0.149769 18.6929 0.0206 18.9731 0.519126C19.4238 1.27924 23.6506 8.09348 31.2319 9.97907C31.6856 10.097 32 10.5169 32 11.0023C32 11.4878 31.6876 11.9087 31.2403 12.0235C23.6268 13.9159 19.4144 20.7391 18.9592 21.5112C18.7807 21.8137 18.4504 21.993 18.1157 21.9998Z" fill="black"/>
+									</svg>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-8 col-xl-7">
+					<div class="swiper service-swiper2">
+						<div class="swiper-wrapper">
+							{% if blog_items %}
+							{% for item in blog_items %}
+								<div class="swiper-slide wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s" data-wow-duration="0.8s">
+								<div class="dz-card style-1 blog-half">
+									<div class="dz-media">
+									{% if item.image %}
+										<img src="{{ item.image.url }}" alt="{{ item.title }}">
+									{% else %}
+										<img src="{% static 'images/blog/list/default.webp' %}" alt="no image">
+									{% endif %}
+									</div>
+									<div class="dz-info">
+									<div class="dz-meta">
+										<ul>
+										<li class="post-date">{{ item.post_date|date:"d M Y" }}</li>
+										</ul>
+									</div>
+									<h3 class="dz-title">
+										<a href="javascript:void(0);">{{ item.title }}</a>
+									</h3>
+									<p>{{ item.subtitle }}</p>
+									<div class="info-bottom">
+										<div class="dz-user-box">
+										<div class="user-media">
+											{% if item.writer_photo %}
+											<img src="{{ item.writer_photo.url }}" alt="{{ item.writer }}">
+											{% else %}
+											<img src="{% static 'images/testimonial/small/default.webp' %}" alt="no photo">
+											{% endif %}
+										</div>
+										<span class="dz-user"> <a href="javascript:void(0);">{{ item.writer }}</a></span>
+										</div>
+										<a href="blog-details.html" class="btn btn-square btn-primary rounded-circle">
+											<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M13.6112 5.65492C10.136 5.0605 7.51448 2.97256 6.14714 1.20711L7.39163 0.268207C8.5473 1.76021 10.8146 3.56974 13.8058 4.08132C16.7587 4.58643 20.5216 3.87898 24.8006 0.0480128L25.9245 1.17194L25.9551 1.20247L25.9567 1.20414L25.9283 1.23263C22.1211 5.49898 21.4702 9.2005 21.9741 12.1464C22.4858 15.1375 24.2953 17.4048 25.7873 18.5605L24.8483 19.8051C23.083 18.4377 20.9949 15.8162 20.4005 12.341C20.0802 10.4688 20.193 8.39429 20.9851 6.17575L1.208 25.9529L0.0518861 24.7968L19.8449 5.00369C17.5994 5.83656 15.4995 5.97798 13.6112 5.65492Z" fill="black"/>
+											</svg>
+										</a>
+									</div>
+									</div>
+								</div>
+								</div>
+							{% endfor %}
+							{% else %}
+
+							<div class="swiper-slide wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="0.8s">
+								<div class="dz-card style-1 blog-half">
+									<div class="dz-media">
+										<img src="{% static 'images/blog/list/img2.webp' %}" alt="">
+									</div>
+									<div class="dz-info">
+										<div class="dz-meta">
+											<ul>
+												<li class="post-date">17 May 2025</li>
+											</ul>
+										</div>
+										<h3 class="dz-title"><a href="blog-details.html">Expert Insights on Medical Plastic Surgery Wellness</a></h3>
+										<p>It is a long established fact that a reader will be distracted by the readable content.</p>
+										<div class="info-bottom">
+											<div class="dz-user-box">
+												<div class="user-media">
+													<img src="{% static 'images/testimonial/small/img1.webp' %}" alt="">
+												</div>
+												<span class="dz-user">By<a href="javascript:void(0);">Emily</a></span>
+											</div>
+											<a href="blog-details.html" class="btn btn-square btn-primary rounded-circle">
+												<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" clip-rule="evenodd" d="M13.6112 5.65492C10.136 5.0605 7.51448 2.97256 6.14714 1.20711L7.39163 0.268207C8.5473 1.76021 10.8146 3.56974 13.8058 4.08132C16.7587 4.58643 20.5216 3.87898 24.8006 0.0480128L25.9245 1.17194L25.9551 1.20247L25.9567 1.20414L25.9283 1.23263C22.1211 5.49898 21.4702 9.2005 21.9741 12.1464C22.4858 15.1375 24.2953 17.4048 25.7873 18.5605L24.8483 19.8051C23.083 18.4377 20.9949 15.8162 20.4005 12.341C20.0802 10.4688 20.193 8.39429 20.9851 6.17575L1.208 25.9529L0.0518861 24.7968L19.8449 5.00369C17.5994 5.83656 15.4995 5.97798 13.6112 5.65492Z" fill="black"/>
+												</svg>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="0.8s">
+								<div class="dz-card style-1 blog-half">
+									<div class="dz-media">
+										<img src="{% static 'images/blog/list/img3.webp' %}" alt="">
+									</div>
+									<div class="dz-info">
+										<div class="dz-meta">
+											<ul>
+												<li class="post-date">17 May 2025</li>
+											</ul>
+										</div>
+										<h3 class="dz-title"><a href="blog-details.html">Expert Insights on Cosmetic Facial Surgery Care</a></h3>
+										<p>It is a long established fact that a reader will be distracted by the readable content.</p>
+										<div class="info-bottom">
+											<div class="dz-user-box">
+												<div class="user-media">
+													<img src="{% static 'images/testimonial/small/img1.webp' %}" alt="">
+												</div>
+												<span class="dz-user">By<a href="javascript:void(0);">Sophia</a></span>
+											</div>
+											<a href="blog-details.html" class="btn btn-square btn-primary rounded-circle">
+												<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" clip-rule="evenodd" d="M13.6112 5.65492C10.136 5.0605 7.51448 2.97256 6.14714 1.20711L7.39163 0.268207C8.5473 1.76021 10.8146 3.56974 13.8058 4.08132C16.7587 4.58643 20.5216 3.87898 24.8006 0.0480128L25.9245 1.17194L25.9551 1.20247L25.9567 1.20414L25.9283 1.23263C22.1211 5.49898 21.4702 9.2005 21.9741 12.1464C22.4858 15.1375 24.2953 17.4048 25.7873 18.5605L24.8483 19.8051C23.083 18.4377 20.9949 15.8162 20.4005 12.341C20.0802 10.4688 20.193 8.39429 20.9851 6.17575L1.208 25.9529L0.0518861 24.7968L19.8449 5.00369C17.5994 5.83656 15.4995 5.97798 13.6112 5.65492Z" fill="black"/>
+												</svg>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="0.8s">
+								<div class="dz-card style-1 blog-half">
+									<div class="dz-media">
+										<img src="https://tse3.mm.bing.net/th/id/OIP.Cmeho6f7YgaIkly0rrSsagHaLH?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="">
+									</div>
+									<div class="dz-info">
+										<div class="dz-meta">
+											<ul>
+												<li class="post-date">17 May 2025</li>
+											</ul>
+										</div>
+										<h3 class="dz-title"><a href="blog-details.html">Expert Insights on Medical Plastic Surgery Wellness</a></h3>
+										<p>It is a long established fact that a reader will be distracted by the readable content.</p>
+										<div class="info-bottom">
+											<div class="dz-user-box">
+												<div class="user-media">
+													<img src="{% static 'images/testimonial/small/img1.webp' %}" alt="">
+												</div>
+												<span class="dz-user">By<a href="javascript:void(0);">Olivia</a></span>
+											</div>
+											<a href="blog-details.html" class="btn btn-square btn-primary rounded-circle">
+												<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" clip-rule="evenodd" d="M13.6112 5.65492C10.136 5.0605 7.51448 2.97256 6.14714 1.20711L7.39163 0.268207C8.5473 1.76021 10.8146 3.56974 13.8058 4.08132C16.7587 4.58643 20.5216 3.87898 24.8006 0.0480128L25.9245 1.17194L25.9551 1.20247L25.9567 1.20414L25.9283 1.23263C22.1211 5.49898 21.4702 9.2005 21.9741 12.1464C22.4858 15.1375 24.2953 17.4048 25.7873 18.5605L24.8483 19.8051C23.083 18.4377 20.9949 15.8162 20.4005 12.341C20.0802 10.4688 20.193 8.39429 20.9851 6.17575L1.208 25.9529L0.0518861 24.7968L19.8449 5.00369C17.5994 5.83656 15.4995 5.97798 13.6112 5.65492Z" fill="black"/>
+												</svg>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="0.8s">
+								<div class="dz-card style-1 blog-half">
+									<div class="dz-media">
+										<img src="{% static 'images/blog/list/img2.webp' %}" alt="">
+									</div>
+									<div class="dz-info">
+										<div class="dz-meta">
+											<ul>
+												<li class="post-date">17 May 2025</li>
+											</ul>
+										</div>
+										<h3 class="dz-title"><a href="blog-details.html">Expert Insights on Cosmetic Facial Surgery Care</a></h3>
+										<p>It is a long established fact that a reader will be distracted by the readable content.</p>
+										<div class="info-bottom">
+											<div class="dz-user-box">   
+												<div class="user-media">
+													<img src="{% static 'images/testimonial/small/img1.webp' %}" alt="">
+												</div>
+												<span class="dz-user">By<a href="javascript:void(0);">Charlotte</a></span>
+											</div>
+											<a href="blog-details.html" class="btn btn-square btn-primary rounded-circle">
+												<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path fill-rule="evenodd" clip-rule="evenodd" d="M13.6112 5.65492C10.136 5.0605 7.51448 2.97256 6.14714 1.20711L7.39163 0.268207C8.5473 1.76021 10.8146 3.56974 13.8058 4.08132C16.7587 4.58643 20.5216 3.87898 24.8006 0.0480128L25.9245 1.17194L25.9551 1.20247L25.9567 1.20414L25.9283 1.23263C22.1211 5.49898 21.4702 9.2005 21.9741 12.1464C22.4858 15.1375 24.2953 17.4048 25.7873 18.5605L24.8483 19.8051C23.083 18.4377 20.9949 15.8162 20.4005 12.341C20.0802 10.4688 20.193 8.39429 20.9851 6.17575L1.208 25.9529L0.0518861 24.7968L19.8449 5.00369C17.5994 5.83656 15.4995 5.97798 13.6112 5.65492Z" fill="black"/>
+												</svg>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>

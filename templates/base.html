@@ -1,0 +1,302 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}" data-theme-color="skin-9">
+<head>
+    {% block meta %}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{{ seo_data.seo_title|default:"Kamil Cəfərov - Rinoplastika Həkimi" }}</title>
+
+{% if seo_data.logo %}
+    <link rel="icon" href="{{ seo_data.logo }}" type="image/png" />
+{% else %}
+    <link rel="icon" href="{% static 'images/default-logo.png' %}" type="image/png" />
+{% endif %}
+
+<meta name="description" content="{{ seo_data.seo_description|default:'Kamil Cəfərov, ixtisaslaşmış rinoplastika həkimi, burun estetikası və funksional əməliyyatlar üzrə mütəxəssisdir.' }}" />
+<meta name="keywords" content="{{ seo_data.meta_keywords|default:'Kamil Cəfərov, rinoplastika, burun əməliyyatı, estetik cərrah, LOR, plastik cərrah' }}" />
+<link rel="canonical" href="{{ seo_data.canonical_url|default:request.build_absolute_uri }}" />
+<meta name="robots" content="{% if seo_data.no_index %}noindex{% else %}index{% endif %}, {% if seo_data.no_follow %}nofollow{% else %}follow{% endif %}" />
+
+<!-- Open Graph and Twitter Meta -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Kamil Cəfərov - Rinoplastika Həkimi" />
+{% get_current_language as current_language %}
+<meta property="og:locale" content="{{ current_language }}_{{ current_language|upper }}" />
+<meta property="og:title" content="{{ seo_data.og_title|default:seo_data.seo_title|default:'Kamil Cəfərov - Rinoplastika Həkimi' }}" />
+<meta property="og:description" content="{{ seo_data.og_description|default:seo_data.seo_description|default:'Kamil Cəfərov, ixtisaslaşmış rinoplastika həkimi, burun estetikası və funksional əməliyyatlar üzrə mütəxəssisdir.' }}" />
+
+<meta property="og:image" content="{{ seo_data.og_image }}" />
+<meta property="og:image:alt" content="{{ seo_data.og_title|default:seo_data.seo_title|default:'Kamil Cəfərov - Rinoplastika Həkimi' }}" />
+<meta property="og:url" content="{{ seo_data.canonical_url|default:request.build_absolute_uri }}" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@kamillc" />
+<meta name="twitter:title" content="{{ seo_data.og_title|default:seo_data.seo_title|default:'Kamil Cəfərov - Rinoplastika Həkimi' }}" />
+<meta name="twitter:description" content="{{ seo_data.og_description|default:seo_data.seo_description|default:'Kamil Cəfərov, ixtisaslaşmış rinoplastika həkimi, burun estetikası və funksional əməliyyatlar üzrə mütəxəssisdir.' }}" />
+<meta name="twitter:image" content="{{ seo_data.og_image }}" />
+
+<meta name="author" content="Kamil Cəfərov" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="theme-color" content="#2196f3" />
+{% endblock %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=DM+Serif+Display:ital@0;1&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet">	
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/twentytwenty/css/twentytwenty.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/tempus-dominus/css/tempus-dominus.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/magnific-popup/magnific-popup.min.css' %}">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	
+</head>
+<body id="bg" data-typography="typography_3">
+	<div class="page-wraper">
+      <div class="dz-loader">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+          <path id="svg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+        </svg>
+        <div class="dz-loader-info">
+          <div class="text-center">
+            {% if preloader %}
+            <img style="width: 200px; height: 70px;" src="{{ preloader.image.url }}" alt="" class="logo" />
+            {% else %}
+            <img style="width: 200px; height: 70px;" src="{% static 'images/lgg.png' %}" alt="" class="logo" />
+            {% endif %}
+
+            <div class="load-text">
+                {% if preloader %}
+                <span>{{ preloader.display_text }}</span>
+                {% else %}
+                <span>L</span>
+                <span>o</span>
+                <span>a</span>
+                <span>d</span>
+                <span>i</span>
+                <span>n</span>
+                <span>g</span>
+                {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="transition-overlay">
+            <div class="layer"></div>
+        </div>
+
+        {% include 'includes/base/_navigation.html' %}
+        {% block content %}
+        {% endblock %}
+        {% include 'includes/home/_consultation.html' %}
+
+        <footer class="site-footer style-1 footer-dark" style="background-image: url({% static 'images/background/pattern2.webp' %})">
+        {% include 'includes/base/footer/_footer_bar.html' %}
+        <div class="footer-middle overflow-hidden">
+            {% if footer %}
+            <div class="dz-features">{{ footer.slide_text }}</div>
+            {% else %}
+            <div class="dz-features">Best Rhinoplastica Surgery Best Rhinoplastica Surgery Best Rhinoplastica Surgery Best Rhinoplastica Surgery Best Rhinoplastica Surgery Best Rhinoplastica Surgery</div>
+            {% endif %}
+        </div>
+        {% include 'includes/base/footer/_footer.html' %}
+        </footer>
+
+        <button id="scrollProgress" title="Scroll to top">
+            <span class="icon"><i class="fa-solid fa-chevron-up"></i></span>
+            <svg width="40" height="40" class="progress-ring">
+                <circle cx="20" cy="20" r="17" />
+            </svg>
+        </button>	
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="{% static 'js/global.min.js' %}"></script>
+<script src="{% static 'vendor/popper/popper.js' %}"></script>
+<script src="{% static 'vendor/tempus-dominus/js/tempus-dominus.min.js' %}"></script>
+<script src="{% static 'vendor/imagesloaded/imagesloaded.js' %}"></script>
+<script src="{% static 'vendor/masonry/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'vendor/twentytwenty/js/jquery.event.move.js' %}"></script>
+<script src="{% static 'vendor/twentytwenty/js/jquery.twentytwenty.js' %}"></script>
+<script src="{% static 'vendor/wnumb/wNumb.js' %}"></script>
+<script src="{% static 'vendor/countdown/jquery.countdown.js' %}"></script>
+
+<script src="{% static 'vendor/gsap/gsap.min.js' %}"></script>
+<script src="{% static 'vendor/gsap/ScrollTrigger.min.js' %}"></script>
+
+<script src="{% static 'js/dz.carousel.js' %}"></script>
+<script src="{% static 'js/dz.ajax.js' %}"></script>
+<script src="{% static 'js/animation.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+<script>
+        // Carousel code
+        if(!window.MDWNonce111){
+            window.MDWNonce111 = true
+            var selector = "[class^='mdw-curved-slider'], [class*=' mdw-curved-slider']",
+                scene = [],
+                renderer = [],
+                options = [],
+                time = [],
+                camera = [],
+                slideAmount = [],
+                currentContainerHeight = [],
+                previousContainerHeight = [],
+                planes = []
+            addEventListener('DOMContentLoaded', function(){
+                
+                function getWidth(gap){ return 1 + gap/100 }
+                function getPlaneWidth(el, camera){
+                    var vFov = camera.fov*Math.PI/180,
+                    height = 2*Math.tan(vFov/2)*camera.position.z,
+                    aspect = el.clientWidth/el.clientHeight,
+                    width = height*aspect
+                    return el.clientWidth/width
+                }
+                function init(e = 'none'){
+                    Array.from(document.querySelectorAll(selector)).forEach(function(el, index){
+                        
+                        if( e == 'none' ){
+                            currentContainerHeight[index] = previousContainerHeight[index] = el.clientHeight
+                        }else{
+                            currentContainerHeight[index] = el.clientHeight
+                            if( mobileHeightChage && currentContainerHeight[index] == previousContainerHeight[index] ) return
+                        }
+                        previousContainerHeight[index] = currentContainerHeight[index]
+                        
+                        var className = el.getAttribute('class'),
+                        classNameIndex = className.indexOf('mdw-curved-slider'),
+                        shortClass = className.substring(classNameIndex, className.indexOf(' ',classNameIndex)),
+                        values = shortClass.split('-')
+                        
+                        options[index] = {
+                            speed: 30,
+                            gap: 10,
+                            curve: 12,
+                            direction: -1
+                        }
+                        
+                        values.forEach(function(value, i){
+                            if(value=='speed' && values[i+1] && !isNaN(values[i+1])){
+                                options[index].speed = values[i+1] }
+                            if(value=='gap' && values[i+1] && !isNaN(values[i+1])){
+                                options[index].gap = values[i+1] }
+                            if(value=='curve' && values[i+1] && !isNaN(values[i+1])){
+                                options[index].curve = values[i+1] }
+                            if(value=='reverse'){ options[index].direction = 1 }
+                        })
+                        
+                        var images = [],
+                            allImages = []
+                            
+                        time[index] = 0
+                            
+                        Array.from(el.querySelectorAll('.elementor-widget-image-gallery .gallery-item')).forEach(function(el, index){
+                            images.push(el.querySelector('img').getAttribute('src'))
+                        })
+                        allImages = images
+                        slideAmount[index] = images.length
+                        scene[index] = new THREE.Scene()
+                        camera[index] = new THREE.PerspectiveCamera( 75, el.clientWidth / el.clientHeight, 0.1, 20 )
+                        camera[index].position.z = 1.5
+                        
+                        renderer[index] = new THREE.WebGLRenderer({ alpha: true, antialias: true })
+                        renderer[index].setSize(el.clientWidth, el.clientHeight)
+                        renderer[index].setPixelRatio(window.devicePixelRatio)
+                        
+                        var previousCanvas = el.querySelector('canvas')
+                        if(previousCanvas) { el.removeChild(previousCanvas) }
+                        el.appendChild(renderer[index].domElement)
+                        
+                        var geometry = new THREE.PlaneGeometry(1, 1, 20, 20),
+                            planeSpace = getPlaneWidth(el,camera[index])*getWidth(options[index].gap),
+                            ratio = Math.ceil(el.clientWidth/(planeSpace*images.length)),
+                            totalImage = Math.ceil(el.clientWidth/planeSpace) + 1 + images.length,
+                            initialOffset = Math.ceil(el.clientWidth/(2*planeSpace)-0.5)
+                            
+                        for( var i = slideAmount[index]; i < totalImage; i++ ){
+                            allImages.push(images[i%slideAmount[index]])
+                        }
+                        
+                        planes[index] = []
+                        
+                        allImages.forEach(function (image, i) {
+                            var loader = new THREE.TextureLoader()
+                            loader.load(
+                                image,
+                                function ( texture ) {
+                                    var material = new THREE.ShaderMaterial({
+                                        uniforms: {
+                                            tex: { value: texture },
+                                            curve: { value: options[index].curve }
+                                        },
+                                        vertexShader: `
+                                            uniform float curve;
+                                            varying vec2 vertexUV;
+                                            void main(){
+                                                vertexUV = uv;
+                                                vec3 newPosition = position;
+                                                float distanceFromCenter = abs(modelMatrix*vec4(position, 1.0)).x;
+                                                newPosition.y *= 1.0 + (curve/100.0)*pow(distanceFromCenter,2.0);
+                                                
+                                                gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+                                            }
+                                        `,
+                                        fragmentShader: `
+                                            uniform sampler2D tex;
+                                            varying vec2 vertexUV;
+                                            void main(){
+                                                gl_FragColor = texture2D(tex, vertexUV);
+                                            }
+                                        `
+                                    })
+                                    planes[index][i] = new THREE.Mesh( geometry, material )
+                                    planes[index][i].position.x = -1*options[index].direction*(i-initialOffset)*getWidth(options[index].gap)
+                                    scene[index].add( planes[index][i] )
+                                }
+                            )
+                        })
+                    })
+                }
+                init()
+                var currentWidth,
+                    previousWidth = window.innerWidth,
+                    mobileHeightChage = false
+                    
+                function onResize(){
+                    currentWidth = window.innerWidth
+                    mobileHeightChage = currentWidth < 768 && currentWidth == previousWidth
+                    init('resize')
+                    previousWidth = currentWidth
+                }
+                window.addEventListener('resize', function(){
+                    onResize()
+                    setTimeout(onResize, 100)
+                })
+                var previousTime = 0
+                function animate(currentTime){
+                    
+                    var timePassed = currentTime - previousTime
+                    
+                    Array.from(document.querySelectorAll(selector)).forEach(function(el, index){
+                        if(Math.abs(scene[index].position.x) >= getWidth(options[index].gap)*slideAmount[index]){ time[index] = 0 }
+                        time[index] += options[index].direction*timePassed*0.00001
+                        scene[index].position.x = time[index]*options[index].speed
+                        renderer[index].render(scene[index], camera[index])
+                    })
+                    
+                    previousTime = currentTime
+                    requestAnimationFrame(animate)
+                }
+                requestAnimationFrame(animate)
+            })
+        }
+    </script>
+</body>
+</html>

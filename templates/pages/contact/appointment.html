@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<main class="page-content">
+
+	<div class="dz-bnr-inr style-1 dz-bnr-inr-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="dz-bnr-inr-entry">
+					<div class="dz-bnr-inr-flex">
+						<div class="bnr-info">
+							<h1 class="wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">Appointment</h1>
+							<nav aria-label="breadcrumb" class="breadcrumb-row wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.8s">
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+									<li class="breadcrumb-item">Appointment</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="bnr-media">
+			<img style="margin-top: 50px;" src="{% static 'images/banner/bnr-pic.webp' %}" alt="" class="wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">
+		</div>
+	</div>	
+</div>
+
+	<section class="content-inner">
+		<div class="container">
+			<div class="row justify-content-center contact-info style-1 p-0">
+				<div class="col-xl-9 m-b30" data-bottom-top="transform: translateY(50px)" data-top-bottom="transform: translateY(-50px)">
+					<div class="form-wrapper style-4">
+						<div class="form-body">
+							<div class="section-head style-15 text-lg-center mb-lg-4">
+								<h2 class="title split-title fw-medium m-b0">Book a Appointment</h2>
+								<p class="m-b0">Share your vision with us.</p>
+							</div>
+							<form class="dz-form dzForm" method="POST" action="https://clinicmaster.dexignzone.com/plasticsurgery/xhtml/script/contact_smtp.php">
+								<input type="hidden" class="form-control" name="dzToDo" value="Contact">
+								<input type="hidden" class="form-control" name="reCaptchaEnable" value="0">
+								<div class="dzFormMsg"></div>
+								<div class="row">
+									<div class="col-xl-6 col-sm-6">
+										<div class="input-group">
+											<input required="" type="text" class="form-control" name="John carter" placeholder="Your name*">
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="input-group">
+											<input required="" type="email" class="form-control" name="info@example.com" placeholder="Email address">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="input-group">
+											<input required="" type="tel" class="form-control" name="phone" placeholder="Phone number"  pattern="[0-9]{10}" maxlength="10">
+										</div>
+									</div>
+									<div class="col-xl-6 col-sm-6 m-b20">
+										<div class="form-floating floating-outline  input-icon-right">
+											<select name="dzOther[Services]" class="bs-select" data-style="form-control">
+												<option selected>Choose a service</option>
+												<option value="Angioplasty">Angioplasty</option>
+												<option value="Cardiology">Cardiology</option>
+												<option value="Dental">Dental</option>
+												<option value="Eye Care">Eye Care</option>
+											</select>
+										</div>
+									</div>
+									
+									<div class="col-xl-6 col-sm-6 m-b20p">
+										<div class="form-floating floating-outline  input-icon-right">
+											<select name="dzOther[DoctorName]" class="bs-select" data-style="form-control">
+												<option selected>Choose a Doctor</option>
+												<option>Nashid Martines</option>
+												<option>Kenneth Fong</option>
+											</select>
+										</div>
+									</div>
+									
+									<div class="col-md-6">
+										<div class="row">
+											<div class="col-sm-6 m-b20">
+												<div class="form-floating floating-outline  input-icon-right">
+													<span class="input-group-text text-secondary"><i class="feather icon-calendar"></i></span>
+													<input name="dzOther[Time]" required type="text" class="form-control" id="datePickerOnly" placeholder="dd-mm-yyyy">
+												</div>
+											</div>
+											<div class="col-sm-6 m-b20">
+												<div class="form-floating floating-outline  input-icon-right">
+													<span class="input-group-text text-secondary"><i class="feather icon-clock"></i></span>
+													<input name="dzOther[Time]" required type="text" class="form-control" id="timePickerOnly" placeholder="Time">
+												</div>
+											</div>
+										</div>
+									</div>
+									
+								
+									<div class="text-lg-center">
+										<button name="submit" type="submit" value="submit" class="btn btn-lg btn-icon btn-rounded btn-secondary btn-style1 mt-4">Submit Now<span class="right-icon">
+												<svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M12.4545 15.4999C12.3311 15.5024 12.2067 15.4709 12.0969 15.3998C11.7802 15.1953 11.6838 14.7514 11.8743 14.4197C11.8903 14.3904 13.8809 10.9078 17.6807 8.71607H0.681818C0.305795 8.71607 0 8.39547 0 8.00124C0 7.607 0.305795 7.2864 0.681818 7.2864H17.6807C13.902 5.10722 11.889 1.60917 11.8692 1.57415C11.6827 1.24032 11.786 0.796048 12.1041 0.598396C12.4266 0.397885 12.8514 0.514045 13.044 0.85395C13.3539 1.37221 16.2598 6.01828 21.4719 7.30391C21.7839 7.38433 22 7.67062 22 8.00159C22 8.33256 21.7852 8.61957 21.4777 8.69784C16.2434 9.98812 13.3474 14.6403 13.0344 15.1668C12.9117 15.373 12.6847 15.4952 12.4545 15.4999Z" fill="black"/>
+												</svg>
+											</span>
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="map-wrapper height-md wow fadeIn" data-wow-delay="0.2s" data-wow-duration="0.8s">
+		{% if contact %}
+		<iframe class="w-100 h-100" src="{{ contact.map_embed }}" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		{% else %}
+		<iframe class="w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4176.894092633746!2d-0.15502509846427073!3d51.502279254634836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2sin!4v1757506574164!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		{% endif %}	</div>	
+	</main>
+
+
+{% endblock %}

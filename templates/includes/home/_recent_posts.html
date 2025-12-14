@@ -1,0 +1,70 @@
+{% load static %}
+{% load i18n %}
+
+<section class="recent-posts">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 wow fadeInUp">
+                <b>07</b>
+                {% if blog_post %}
+                <h4><span>{{ blog_post.title }}</span></h4>
+                <small>{{ blog_post.subtitle }}</small>
+                {% else %}
+                <h4><span>Rinoplastika</span></h4>
+                <small>Burun estetik əməliyyatı ilə bağlı məlumatlar</small>
+                {% endif %}
+            </div>
+            {% if service_items %}
+                <div class="row">
+                    {% for item in service_items %}
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.{{ forloop.counter0 }}s">
+                        <div class="post-box">
+                            {% if item.image %}
+                            <figure>
+                                <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                            </figure>
+                            {% endif %}
+
+                            <h6>
+                                <a href="{% url 'rhinoplastica_detail' item.slug %}">{{ item.title }}</a>
+                            </h6>
+
+                            {% if item.detail %}
+                            <p class="intro-text">{{ item.detail.intro_text|truncatewords:20|safe }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0s">
+                <div class="post-box">
+                    <figure>
+                        <img alt="Image" src="{% static 'images/mualice/qbb3.jpg' %}">
+                    </figure>
+                    <h6><a href="{% static 'data/az/3.ent_burun_baliqqulagi.html' %}">Balıqqulağı hipertrofiyası</a></h6>
+                    <p>İçərisində bol miqdarda qan damarları olan konxaların əsas funksiyaları nəfəs alınan havanı isitmək...</p>
+                </div>
+            </div>
+            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.10s">
+                <div class="post-box">
+                    <figure>
+                        <img alt="Image" src="{% static 'images/mualice/qbb7.jpg' %}">
+                    </figure>
+                    <h6><a href="{% static 'data/az/7.ent_burun_cepereyriliyi.html' %}">Çəpər əyriliyi (septum deviasiyası)</a></h6>
+                    <p>Septum deviasiyasının səbəbləri müxtəlifdir. Nadir hallarda, bəzi körpələr ana bətnində septumun əyri...</p>
+                </div>
+            </div>
+            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.20s">
+                <div class="post-box">
+                    <figure>
+                        <img alt="Image" src="{% static 'images/mualice/qbb18.jpg' %}">
+                    </figure>
+                    <h6><a href="{% static 'data/az/18.ent_burun_rinoplastika.html' %}">Rinoplastika</a></h6>
+                    <p>Burun estetikası ədəbiyyatda Rinoplastika adlanır. Buruna yenidən forma vermək üçün...</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>

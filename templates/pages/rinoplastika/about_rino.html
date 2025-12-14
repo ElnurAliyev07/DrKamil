@@ -1,0 +1,69 @@
+{% extends 'noslider_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+	<header class="page-header" 
+	{% if about_rino.header_image %}
+	data-background="{{ about_rino.header_image.url }}"
+	{% endif %}
+	data-stellar-background-ratio="1.15">
+		<div class="container">
+			{% if about_rino %}
+			<h1>{{ about_rino.title }}</h1>
+			<p>{{ about_rino.subtitle }}</p>
+			{% else %}
+			<h1>Rinoplastika</h1>
+			<p>Rinoplastika</p>
+			{% endif %}
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="{% url 'home' %}">{% trans "Ana səhifə" %}</a>
+				</li>
+				{% if about_rino %}
+				<li class="breadcrumb-item">{{ about_rino.title }}</li>
+				{% else %}
+				<li class="breadcrumb-item active">Rinoplastika</li>
+				{% endif %}
+			</ol>
+		</div>
+	</header>
+	<section class="about-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					{% if about_rino %}
+					<p class="intro-text">{{ about_rino.intro_text|safe }}</p>
+					<img class="mb-20" src="{{ about_rino.extra_image.url }}" alt="{{ about_rino.title }}">
+					<p>{{ about_rino.description|safe }}</p>
+					{% else %}
+					<p>Burun estetikası ədəbiyyatda Rinoplastika adlanır. Buruna yenidən forma vermək üçün aparılan əməliyyatdır. Burun estetik əməliyyatı estetik əməliyyatlar içərisində ən mürəkkəbidir.</p>
+					<p><strong>Burun estetik əməliyyatında hədəflər nə olmalıdır?</strong></p>
+					<p>Burun estetik əməliyyatında burunun mövcud quruluşu və üz ilə əlaqəsinə baxılaraq aşağıdakıları icra etmək lazımdır:</p><img class="mb-20" src="../../images/mualice/qbb18.jpg">
+					<p>A. Burunun üzün digər vahidləri və öz hissələri ilə (burun kökü, orta hissəsi, burun ucu) uyğunluğu</p>
+					<p>B. Burunun nəfəs alma funksiyasının normal olmasını təmin etmək.</p>
+					<p><strong>Rinoplastikada estetik baxımdan nələr icra edilir?</strong></p>
+					<ul>
+						<li>Burun ucunun incəldilməsi</li>
+						<li>Burunun ölçülərinin kiçildilməsi və ya böyüdülməsi</li>
+						<li>Burunun üzdən çıxışının artırılıb, azaldılması</li>
+						<li>Burun-dodaq və burun–alın bucağının dəyişdirilməsi</li>
+						<li>Burunun orta hissəsində sümük-qığırdaq çıxıntılarının düzəldilməsi və s.</li>
+					</ul>
+					<p><strong>Estetik burun əməliyyatında fuksional baxımdan nələr icra edilir?</strong></p>
+					<p>Rinoplastika–burun formasının düzəldilməsi əməliyyatı olmaqla yanaşı, həm də burun daxilindəki sümük və qığırdaq əyriliklərinin və ya burun əti olaraq bilinən konxa hipertrofiyasına bağlı nəfəs alma problemlərinin aradan qaldırılması da eyni əməliyyatda icra edilir. Əgər ehtiyac olsa burun daxili poliplərin təmizlənməsi, sinusit əməliyyatı da eyni zamanda icra oluna bilər.</p>
+					<p><strong>Burun estetik əməliyyatında həkim və xəstə dialoqunun əhəmiyyəti</strong></p>
+					<p>Xəstənin istəklərinin həkim tərəfindən bilinməsi, onun real olub-olmaması, istəklərinin nə qədərinin mümkünlüyü xəstəyə izah edilməlidir. Dünyadakı bütün insanların burunları sümük, qığırdaq və dərinin quruluşu cəhətdən fərqli xüsusiyyətə malikdir. Buna görə də əməliyyatdan sonrakı nəticə də fərqli olacaqdır. İncə dərili bir burunda alınan nəticə ilə qalın, yağlı dəriyə sahib bir xəstədə alınacaq nəticələr eyni olmayacaqdır.</p>
+					<p><strong>Estetik burun əməliyyatı sadəcə burnu kiçiltmə əməliyyatı deyil</strong></p>
+					<p>Burun estetik əməliyyatında əsas məqsəd üzün digər vahidləri ilə uyğun və normal nəfəs alma funksiyası olan bir burun düzəltməkdir.</p>
+					<p><strong>Estetik burun əməliyyatı hansı yaşda icra edilə bilər?</strong></p>
+					<p>Rinoplastika burunun inkişafı başa çatdıqdan sonra icra edilməlidir. Bu sərhəd qızlarda 16-17 yaş, oğlanlarda isə 17-18 yaş olaraq müəyyən edilib.<br>
+					Rinoplastika ümumi anesteziya altında icra edilir.</p>
+					<p><strong>Rinoplastika əməliyyatından sonra normal həyat tərzi</strong></p>
+					<p>Burun estetikasından sonrakı dövr xəstə üçün çox rahat keçən ağrısız bir dövrdür. Əməliyyatın 1 həftəsində burun üzərindəki plastik gips vəya flastrlar çıxarılaraq, 5-7 gün kağız flastr yapışdırılır. 2 həftə sonra şişliklər çəkilmiş şəkildə normal aktiv həyat tərzinə qayıdırlar. Ancaq qalın dərili burunlarda burun üzərindəki şişliklərin çəkilməsi 3-4 həftəyə qədər çəkə bilər. Burun dərisindəki ödem aylar içərisində getdikcə azalır və burun daha incə və gözəl görünür.</p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

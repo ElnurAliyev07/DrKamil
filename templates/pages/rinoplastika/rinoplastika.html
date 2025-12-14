@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+	<main class="page-content">
+
+	<div class="dz-bnr-inr style-1 dz-bnr-inr-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="dz-bnr-inr-entry">
+					<div class="dz-bnr-inr-flex">
+						<div class="bnr-info">
+							<h1 class="wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">Xidmətlər</h1>
+							<nav aria-label="breadcrumb" class="breadcrumb-row wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.8s">
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="{% url 'home' %}">Ana Səhifə</a></li>
+									<li class="breadcrumb-item">Xidmətlər</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="bnr-media">
+			<img style="margin-top: 50px;" src="{% static 'images/banner/bnr-pic.webp' %}" alt="" class="wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">
+		</div>
+	</div>	
+</div>
+
+	
+	<section id="creativedesign" class="content-inner-1 service-section-wrapper">
+		<!-- Left Menu -->
+			 <div class="service-menu-wrapper sticky-top">
+				<div class="service-menu sidebar-sticky-wrap">
+					<button data-slide="0" class="active">Breast Procedures</button>
+					<button data-slide="1">Facial Procedures</button>
+					<button data-slide="2">Body Contouring</button>
+					<button data-slide="3">Non-Surgical</button>
+					<button data-slide="4">Sculpted Sites</button>
+				</div>
+			 </div>
+		<div class="container">
+			<div class="sliders">
+				<div class="row">
+					<div class="col-xxl-4 col-lg-5 mb-lg-0 mb-3">
+						<div class="swiper text-swiper">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="section-head style-15 mb-0">
+										<h2 class="title m-b20 mb-md-4">Breast Procedures</h2>
+										<p class="text mb-lg-4">It is a long established fact that breast procedures not only enhance appearance but also restore confidence. Our specialized treatments focus on natural proportions, safety, and long-lasting results. Each procedure is carefully designed to meet individual needs and provide balance to the overall body shape.</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="section-head style-15 mb-0">
+										<h2 class="title m-b20 mb-md-4">Facial Procedures</h2>
+										<p class="text mb-lg-4">It is a long established fact that facial procedures can refine and rejuvenate natural beauty. From subtle enhancements to advanced corrective treatments, our methods deliver youthful, radiant, and harmonious results. Every approach is tailored to highlight unique features and restore confidence in appearance.</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="section-head style-15 mb-0">
+										<h2 class="title m-b20 mb-md-4">Body Contouring</h2>
+										<p class="text mb-lg-4">It is a long established fact that body contouring helps reshape and redefine physical appearance. By targeting stubborn fat and enhancing natural curves, our techniques provide a toned and sculpted look. These treatments are personalized to achieve balance, proportion, and long-term satisfaction.</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="section-head style-15 mb-0">
+										<h2 class="title m-b20 mb-md-4">Non-Surgical</h2>
+										<p class="text mb-lg-4">It is a long established fact that non-surgical treatments offer safe and effective alternatives to invasive methods. With minimal downtime, these advanced procedures rejuvenate skin, restore youthfulness, and improve overall texture. They are designed for those seeking quick yet lasting transformations.</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="section-head style-15 mb-0">
+										<h2 class="title m-b20 mb-md-4">Sculpted Sites</h2>
+										<p class="text mb-lg-4">It is a long established fact that sculpted site treatments focus on enhancing specific areas of the body. These precise techniques highlight natural features and improve definition where it matters most. Each treatment is carefully planned to create harmony, proportion, and confidence.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xxl-8 col-lg-7">
+					<!-- Image Swiper -->
+      			<div class="swiper image-swiper">
+					<div class="swiper-wrapper">
+         				<div class="swiper-slide">
+							<div class="meida-wrapper">
+								<div class="media1">
+									<img src="{% static 'images/services/small/img2.webp' %}" alt="">
+								</div>
+								<div class="media2">
+									<img src="{% static 'images/services/large/img2.webp' %}" alt="">
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="meida-wrapper">
+								<div class="media1">
+									<img src="{% static 'images/services/small/img1.webp' %}" alt="">
+								</div>
+								<div class="media2">
+									<img src="{% static 'images/services/large/img1.webp' %}" alt="">
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="meida-wrapper">
+								<div class="media1">
+									<img src="{% static 'images/services/small/img4.webp' %}" alt="">
+								</div>
+								<div class="media2">
+									<img src="{% static 'images/services/large/img4.webp' %}" alt="">
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="meida-wrapper">
+								<div class="media1">
+									<img src="{% static 'images/services/small/img3.webp' %}" alt="">
+								</div>
+								<div class="media2">
+									<img src="{% static 'images/services/large/img3.webp' %}" alt="">
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<div class="meida-wrapper">
+								<div class="media1">
+									<img src="{% static 'images/services/small/img5.webp' %}" alt="">
+								</div>
+								<div class="media2">
+									<img src="{% static 'images/services/large/img5.webp' %}" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				 </div>
+					</div>
+				</div>			
+			</div>
+		</div>
+	</section>
+	{% include 'includes/home/_innovation.html' %}
+	{% include 'includes/home/_section3.html' %}
+
+</main>
+ <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const textSwiper = new Swiper('.text-swiper', {
+      speed: 600,
+      effect: "slide"
+    });
+
+    const imageSwiper = new Swiper('.image-swiper', {
+      allowTouchMove: false,
+      speed: 600,
+      effect: "fade",
+      fadeEffect: { crossFade: true }
+    });
+
+    // Sync both sliders
+    textSwiper.controller.control = imageSwiper;
+    imageSwiper.controller.control = textSwiper;
+
+    // Menu buttons
+    const buttons = document.querySelectorAll('.service-menu button');
+    buttons.forEach((btn, index) => {
+      btn.addEventListener('click', () => {
+        textSwiper.slideTo(index);
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+{% endblock %}

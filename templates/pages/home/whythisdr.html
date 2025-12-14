@@ -1,0 +1,63 @@
+{% extends 'noslider_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+	<header class="page-header" 
+    {% if whythisdr %}
+        style="background-image: url('{{ whythisdr.header_image.url }}');"
+    {% else %}
+        data-background="{% static 'images/header01.jpg' %}"
+    {% endif %}
+    data-stellar-background-ratio="1.15">
+		<div class="container">
+            {% if whythisdr %}
+			<h1>{{ whythisdr.title }}</h1>
+			<p>{{ whythisdr.subtitle }}</p>
+            {% else %}
+            <h1>Niyə Dos. Dr. Cavid Cabbarzadə?</h1>
+            <p>Müraciət etməyiniz üçün əsas səbəblər</p>
+            {% endif %}
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="{% url 'home' %}">{% trans "Ana səhifə" %}</a>
+				</li>
+                {% if whythisdr %}
+                <li class="breadcrumb-item active">{{ whythisdr.title }}</li>
+                {% else %}
+                <li class="breadcrumb-item active">Niyə Dos. Dr. Cavid Cabbarzadə?</li>
+                {% endif %}
+			</ol>
+		</div>
+	</header>
+	<section class="about-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+                {% if whythisdr %}
+					<h5>{{ whythisdr.title }}</h5>
+                {% else %}
+					<h5>Niyə Dos. Dr. Cavid Cabbarzadə?</h5>
+                {% endif %}
+				</div>
+				<div class="col-lg-12">
+                    {% if whythisdr %}
+					    {{ whythisdr.description|safe }}
+                    {% else %}
+					<p>Axtarış motorlarında insanlar tərəfindən tez-tez, <strong>"Ən yaxşı rinoplastika həkimi", "En yaxşı rinoplastika hekimi", "Rinoplastika üçün hansı hekim", "Rinoplastika üçün hansı həkim", "En yaxşı estetik burun hekimi", "Ən yaxşı burun estetik həkimi", "En yaxsi burun hekimi"</strong> kimi axtarışlar edilməkdədir. Əslində bu sualların konkret cavabı yoxdur. Çünki, <strong> "ən yaxşı burun"</strong> və <strong>"ən yaxşı həkim"</strong> anlayışları nisbidir. Hər kəs öz zövqünə, gözləntisinə və anlayışına uyğun olaraq həkim seçməktədir. Dos. Dr. Cavid Cabbarzadə təbii, əməliyyat olunduğu bilinməyən və funksional burunlara üstünlük verir. Aşağıdakı nüanslarda pasientlərin hansı səbəblərə görə Dos. Dr. Cavid Cabbarzadəni seçə biləcəkləri qeyd olunmuşdur.</p>	
+					<ul>
+						<li>Neçə illərdir sadəcə burun əməliyyatlarına fokuslanıb. Təcrübəsinin 95%-ni rinoplastika əməliyyatları təşkil edir. Tibb sahəsində Türkiyənin ən qabaqcıl universitetlərindən biri olan Hacettepe Universitetində qulaq-burun-boğaz və baş-boyun cərrahiyyəsi üzrə uzmanlıq təhsili alıb. Rinoplastikanın ən vacib aspekti şübhəsiz ki, nəfəs və funksionallıqdır. O, uzmanlıq dövründə tənəffüs problemi olan yüzlərlə Türkiyə vətəndaşını müalicə və əməliyyat etmişdir. Uzmanlıq dövründən rinoplastikaya fokuslanan Dr. Cabbarzadə elmi işini də rinoplastika üzrə etmişdir. 2023-cü ildə Türkiyə Cümhuriyyəti Üniversitelerarası Kurul Başkanlığı tərəfindən elmi işləri dəyərləndirilərək ona qulaq-burun-boğaz xəstəlikləri üzrə dosent ünvanı verilmişdir.</li>
+						<li>O, 2018-ci ildə Londonda Beynəlxalq Üz Plastik Cərrahiyyəsi Akademiyaları tərəfindən sertifikatlaşdırılaraq “European Board Certified Facial Plastic Surgeon” ünvanını qazanmışdır. Eyni zamanda, üz plastik və rekonstruktiv cərrahiyyə üzrə diplomat təyin edilmişdir. 2022-ci ildə isə Vyanada keçirilən ikimərhələli imtahan sonrası “European Board Certified Otorhinolaryngologist” ünvanını qazanmışdır. Dr. Cabbarzadə hazırda ölkəmizdə həm qulaq-burun-boğaz, həm də üz plastik cərrahiyyəsi üzrə Avropada sertifikatlaşdırılmış yeganə cərrahdır.</li>
+						<li>Dr. Cabbarzadə rinoplastika mövzusunda yeni texnikalar, alqoritmlər və patentli alətlər ortaya qoymuşdur. Bu yenilikləri təqdim etsin deyə hər il dünyanın müxtəlif ölkələrinə rinoplastika ilə bağlı məruzə üçün dəvət edilir. ABŞ, İngiltərə, Almaniya, Norveç, İspaniya, Fransa, İtaliya, Braziliya, Türkiyə, Birləşmiş Ərəb Əmirlikləri, Rusiya, İran, Portuqaliya, Dr. Cabbarzadənin rinoplastika ilə bağlı məruzə etdiyi ölkələrdən bəziləridir.</li>
+						<li>O, texnoloji və cərrahi yenilikləri yaxından təqib edir və uyğun pasientlərində istifadə edir. Onun rinoplastika kitabxanasında müasir rinoplastikanın atası sayılan Jacques Joseph - in kitabı da daxil olmaqla, rinoplastika ilə bağlı yüzlərlə kitab və məqalələr vardır. Müasir dövrdə istifadə olunan cərrahi texnikalara hakim olan Dr. Cabbarzadə hər xəstəsində, həmin xəstəyə ən uyğun texnikanı istifadə edir.</li>
+						<li>Onun üçün keyfiyyət ön plandadır. Onun əsas prinsipi çoxlu əməliyyat etmək yox, məmnun olan xəstələrə sahib olmaqdır. O, həm əməliyyata yaxşı fokuslanmaq üçün, həm də əməliyyat etmiş olduğu xəstələrə yüksək xidmət edə bilmək üçün hər gün sadəcə bir rinoplastika əməliyyatı edir.</li>
+						<li>İngilis dilini mükəmməl bildiyi üçün və dünya standartlarına uyğun xidmət göstərdiyi üçün hər il onlarla xəstə ölkə xaricindən Dr. Cabbarzadəyə müalicə və əməliyyat üçün müraciət edir.</li>
+					</ul>
+                    {% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

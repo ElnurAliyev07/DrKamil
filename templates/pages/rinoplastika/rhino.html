@@ -1,0 +1,144 @@
+{% extends 'noslider_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+	<header class="page-header" 
+    {% if innovation %}
+    style="background-image: url('{{ innovation.header_image.url }}');"
+    {% else %}
+    data-background="{% static 'images/header01.jpg' %}"
+    {% endif %}
+    data-stellar-background-ratio="1.15">
+		<div class="container">
+            {% if innovation %}
+            <h1>{{ innovation.title }}</h1>
+            <p>{{ innovation.subtitle }}</p>
+            {% else %}
+            <h1>Məqalələr</h1>
+            <p>Dr. Cabbarzadənin rinoplastika ilə bağlı yenilikləri</p>
+            {% endif %}
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="{% url 'home' %}">{% trans "Ana səhifə" %}</a>
+				</li>
+				<li class="breadcrumb-item">
+					<a href="{% url 'about' %}">{% trans "Haqqımda" %}</a>
+				</li>
+                {% if innovation %}
+                <li class="breadcrumb-item active">{{ innovation.link_title }}</li>
+                {% else %}
+                <li class="breadcrumb-item active">Yeniliklərlə bağlı məqalələr</li>
+                {% endif %}
+			</ol>
+		</div>
+	</header>
+	<section class="facilities">
+		<div class="container">
+			<div class="row">
+
+                {% if innovation %}
+                {% for item in innovation.items.all %}
+                <div class="col-lg-6 col-md-6">
+					<figure>
+						<img alt="Image" src="{{ item.image.url }}">
+						<figcaption>
+							<p>{{ item.caption }}</p>
+						</figcaption>
+					</figure>
+				</div>
+                {% endfor %}
+                {% else %}
+				<div class="col-lg-6 col-md-6">
+					<figure>
+						<img alt="Image" src="{% static 'images/articles/j14.jpg' %}">
+						<figcaption>
+							<p>Cabbarzade C. Rhinoplasty Technique for Improving Nasal Base Aesthetics: Lateral Columellar Grafting. Ann Plast Surg. 2023 May 1;90(5):419-424. doi: 10.1097/SAP.0000000000003505</p>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<figure>
+						<img alt="Image" src="{% static 'images/articles/j11.jpg' %}">
+						<figcaption>
+							<p>Cabbarzade C. Skin Tensioning Concept in Rhinoplasty Using a Semifixed Support Mechanism. J Craniofac Surg. 2023 Jan-Feb 01;34(1):e28-e32. doi: 10.1097/SCS.0000000000008894</p>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<figure>
+						<img alt="Image" src="{% static 'images/articles/j15.jpg' %}">
+						<figcaption>
+							<p>Cabbarzade C. SELF: A Novel Algorithm for Deciding the Position of Lateral Osteotomies in Rhinoplasty Patients with Minimal External Deviation. Aesthetic Plast Surg. 2022 Aug;46(4):1848-1857. doi: 10.1007/s00266-022-02791-0</p>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<figure>
+						<img alt="Image" src="{% static 'images/articles/j15.jpg' %}">
+						<figcaption>
+							<p>Cabbarzade C. Septal Bony Paste Graft: A Life-Saving Material in Rhinoplasty Camouflage. Aesthetic Plast Surg. 2021 Sep 7. doi: 10.1007/s00266-021-02560-5</p>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<figure>
+						<img alt="Image" src="{% static 'images/articles/j15.jpg' %}">
+						<figcaption>
+							<p>Cabbarzade C. A New Tool for Controlled Cartilage Crushing in Rhinoplasty. Aesthetic Plast Surg. 2021 Aug;45(4):1952-1954. doi: 10.1007/s00266-021-02157-y. Epub 2021 Feb 9</p>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<figure>
+						<img alt="Image" src="{% static 'images/articles/j13.jpg' %}">
+						<figcaption>
+							<p>Cabbarzade C. Mucoperichondrial Spreader Flap Application for Middle Vault Reconstruction in Rhinoplasty: A Review of 857 Cases. Aesthet Surg J. 2021 May 18;41(6):NP701-NP705. doi: 10.1093/asj/sjaa333</p>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<figure>
+						<img alt="Image" src="{% static 'images/articles/j13.jpg' %}">
+						<figcaption>
+							<p>Cabbarzade C. A Practical Way to Prevent Nose and Cheek Damage Due to the Use of N95 Masks in the COVID-19 Pandemic. Aesthet Surg J. 2020 Jul 17 doi: 10.1093/asj/sjaa167</p>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<figure>
+						<img alt="Image" src="{% static 'images/articles/j12.jpg' %}">
+						<figcaption>
+							<p>Cabbarzade C. A New Algorithm for Hump Reduction According to Dynamics of Dorsal Preservation. Aesthet Surg J. 2019 Nov 13;39(12):NP547-NP549. doi: 10.1093/asj/sjz265</p>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<figure>
+						<img alt="Image" src="{% static 'images/articles/j12.jpg' %}">
+						<figcaption>
+							<p>Cabbarzade C. A New Practically Designed Punch for Preservation Rhinoplasty. Plastic and Reconstructive Surgery–Global Open 2020; 8 (2), e2656</p>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<figure>
+						<img alt="Image" src="{% static 'images/articles/j11.jpg' %}">
+						<figcaption>
+							<p>Cabbarzade C. A Promising New Technique for Correcting a Deviated Nose: Partial Disarticulation of Keystone Area. J Craniofac Surg. 2019 Nov-Dec;30(8):2586-2589. doi: 10.1097/SCS.0000000000005678</p>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<figure>
+						<img alt="Image" src="{% static 'images/articles/j10.jpg' %}">
+						<figcaption>
+							<p>Cabbarzade C. A novel tip suture technique in rhinoplasty: lateral crus caudocephalic rotation suture. European Journal of Plastic Surgery, 2019 Nov; doi: 10.1007/s00238-019-01595-x</p>
+						</figcaption>
+					</figure>
+				</div>
+                {% endif %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

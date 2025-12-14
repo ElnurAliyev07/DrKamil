@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+	<main class="page-content">
+	
+	<div class="dz-bnr-inr style-1 dz-bnr-inr-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="dz-bnr-inr-entry">
+					<div class="dz-bnr-inr-flex">
+						<div class="bnr-info">
+							<h1 class="wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">Blog</h1>
+							<nav aria-label="breadcrumb" class="breadcrumb-row wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.8s">
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+									<li class="breadcrumb-item">Blog</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="bnr-media">
+			<img style="margin-top: 50px;" src="{% static 'images/banner/bnr-pic.webp' %}" alt="" class="wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">
+		</div>
+	</div>	
+</div>
+
+	{% include 'includes/home/_video_section.html' %}
+
+	<section class="content-inner">
+		<div class="container">
+				<div class="row loadmore-content">
+				<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 m-b30">
+					<div class="dz-card style-2">
+						<div class="dz-media">
+							<img src="{% static 'images/blog/grid/1.webp' %}" alt="/">
+						</div>
+						<div class="dz-info">
+							<div class="dz-left">
+								<h3 class="dz-title">
+									<a href="blog-details.html">Liposuction: What It Is, Surgery, Recovery & Results</a>
+								</h3>
+							<div class="dz-meta">
+									<ul>
+										<li class="post-date"><time datetime="2025-05-17">17 May 2025</time></li>
+																											<li class="post-author"><span class="divider">-</span>By <a href="javascript:void(0);">Nashid Martines</a></li>
+									</ul>
+								</div>
+							</div>
+							<a href="blog-details.html" class="dz-right p-3 btn-rounded">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7 17L17 7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+									<path d="M7 7H17V17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 m-b30">
+					<div class="dz-card style-2">
+						<div class="dz-media">
+							<img src="{% static 'images/blog/grid/2.webp' %}" alt="/">
+						</div>
+						<div class="dz-info">
+							<div class="dz-left">
+								<h3 class="dz-title">
+									<a href="blog-details.html">Sculpting Beauty: The Art ofFace and Body Contouring</a>
+								</h3>
+							<div class="dz-meta">
+									<ul>
+										<li class="post-date"><time datetime="2025-05-17">17 May 2025</time></li>
+																											<li class="post-author"><span class="divider">-</span>By <a href="javascript:void(0);">Nashid Martines</a></li>
+									</ul>
+								</div>
+							</div>
+							<a href="blog-details.html" class="dz-right p-3 btn-rounded">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7 17L17 7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+									<path d="M7 7H17V17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 m-b30">
+					<div class="dz-card style-2">
+						<div class="dz-media">
+							<img src="{% static 'images/blog/grid/3.webp' %}" alt="/">
+						</div>
+						<div class="dz-info">
+							<div class="dz-left">
+								<h3 class="dz-title">
+									<a href="blog-details.html">Best Skin Treatments for Tight and Glowing Skin</a>
+								</h3>
+								<div class="dz-meta">
+									<ul>
+										<li class="post-date"><time datetime="2025-05-17">17 May 2025</time></li>
+																											<li class="post-author"><span class="divider">-</span>By <a href="javascript:void(0);">Nashid Martines</a></li>
+									</ul>
+								</div>
+							</div>
+							<a href="blog-details.html" class="dz-right p-3 btn-rounded">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7 17L17 7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+									<path d="M7 7H17V17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 m-b30">
+					<div class="dz-card style-2">
+						<div class="dz-media">
+							<img src="{% static 'images/blog/grid/4.webp' %}" alt="/">
+						</div>
+						<div class="dz-info">
+							<div class="dz-left">
+								<h3 class="dz-title">
+									<a href="blog-details.html">Liposuction: What It Is, Surgery, Recovery & Results</a>
+								</h3>
+							<div class="dz-meta">
+									<ul>
+										<li class="post-date"><time datetime="2025-05-17">17 May 2025</time></li>
+										<li class="post-author"><span class="divider">-</span>By <a href="javascript:void(0);">Nashid Martines</a></li>
+									</ul>
+								</div>
+							</div>
+							<a href="blog-details.html" class="dz-right p-3 btn-rounded">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7 17L17 7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+									<path d="M7 7H17V17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 m-b30">
+					<div class="dz-card style-2">
+						<div class="dz-media">
+							<img src="{% static 'images/blog/grid/5.webp' %}" alt="/">
+						</div>
+						<div class="dz-info">
+							<div class="dz-left">
+								<h3 class="dz-title">
+									<a href="blog-details.html">Sculpting Beauty: The Art ofFace and Body Contouring</a>
+								</h3>
+							<div class="dz-meta">
+									<ul>
+										<li class="post-date"><time datetime="2025-05-17">17 May 2025</time></li>
+																											<li class="post-author"><span class="divider">-</span>By <a href="javascript:void(0);">Nashid Martines</a></li>
+									</ul>
+								</div>
+							</div>
+							<a href="blog-details.html" class="dz-right p-3 btn-rounded">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7 17L17 7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+									<path d="M7 7H17V17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 m-b30">
+					<div class="dz-card style-2">
+						<div class="dz-media">
+							<img src="{% static 'images/blog/grid/6.webp' %}" alt="/">
+						</div>
+						<div class="dz-info">
+							<div class="dz-left">
+								<h3 class="dz-title">
+									<a href="blog-details.html">Best Skin Treatments for Tight and Glowing Skin</a>
+								</h3>
+							<div class="dz-meta">
+									<ul>
+										<li class="post-date"><time datetime="2025-05-17">17 May 2025</time></li>
+																											<li class="post-author"><span class="divider">-</span>By <a href="javascript:void(0);">Nashid Martines</a></li>
+									</ul>
+								</div>
+							</div>
+							<a href="blog-details.html" class="dz-right p-3 btn-rounded">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7 17L17 7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+									<path d="M7 7H17V17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 m-b30">
+					<div class="dz-card style-2">
+						<div class="dz-media">
+							<img src="{% static 'images/blog/grid/7.webp' %}" alt="/">
+						</div>
+						<div class="dz-info">
+							<div class="dz-left">
+								<h3 class="dz-title">
+									<a href="blog-details.html">Liposuction: What It Is, Surgery, Recovery & Results</a>
+								</h3>
+							<div class="dz-meta">
+									<ul>
+										<li class="post-date"><time datetime="2025-05-17">17 May 2025</time></li>
+																											<li class="post-author"><span class="divider">-</span>By <a href="javascript:void(0);">Nashid Martines</a></li>
+									</ul>
+								</div>
+							</div>
+							<a href="blog-details.html" class="dz-right p-3 btn-rounded">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7 17L17 7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+									<path d="M7 7H17V17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 m-b30">
+					<div class="dz-card style-2">
+						<div class="dz-media">
+							<img src="{% static 'images/blog/grid/8.webp' %}" alt="/">
+						</div>
+						<div class="dz-info">
+							<div class="dz-left">
+								<h3 class="dz-title">
+									<a href="blog-details.html">Sculpting Beauty: The Art ofFace and Body Contouring</a>
+								</h3>
+							<div class="dz-meta">
+									<ul>
+										<li class="post-date"><time datetime="2025-05-17">17 May 2025</time></li>
+																											<li class="post-author"><span class="divider">-</span>By <a href="javascript:void(0);">Nashid Martines</a></li>
+									</ul>
+								</div>
+							</div>
+							<a href="blog-details.html" class="dz-right p-3 btn-rounded">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7 17L17 7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+									<path d="M7 7H17V17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 m-b30">
+					<div class="dz-card style-2">
+						<div class="dz-media">
+							<img src="{% static 'images/blog/grid/9.webp' %}" alt="/">
+						</div>
+						<div class="dz-info">
+							<div class="dz-left">
+								<h3 class="dz-title">
+									<a href="blog-details.html">Best Skin Treatments for Tight and Glowing Skin</a>
+								</h3>
+							<div class="dz-meta">
+									<ul>
+										<li class="post-date"><time datetime="2025-05-17">17 May 2025</time></li>
+																											<li class="post-author"><span class="divider">-</span>By <a href="javascript:void(0);">Nashid Martines</a></li>
+									</ul>
+								</div>
+							</div>
+							<a href="blog-details.html" class="dz-right p-3 btn-rounded">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7 17L17 7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+									<path d="M7 7H17V17" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="text-center m-t30 m-lg-t0 wow fadeInUp" data-wow-delay="1.4s" data-wow-duration="0.8s">
+				<a href="javascript:void(0);" class="btn btn-lg btn-icon btn-rounded btn-primary btn-style1 dz-load-more wow fadeInUp" rel="ajax/blog-grid.html" data-wow-delay="0.6s" data-wow-duration="0.8s">
+					Load More
+					<span class="right-icon">
+						<i class="feather icon-refresh-ccw"></i>
+					</span>
+				</a>
+			</div>
+		</div>
+	</section>
+    </main>
+{% endblock %}

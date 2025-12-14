@@ -1,0 +1,148 @@
+{% load static %}
+{% load i18n %}
+
+<section
+  class="content-inner-6 bg-white bg-higlight bg-text position1"
+  data-text="{% if intro.main_word %}{{ intro.main_word }}{% else %}Haqqımda{% endif %}"
+>
+  <div class="container">
+    <div
+      class="row content-wrapper style-1 align-items-end justify-content-between"
+    >
+      <div class="col-xl-5 col-lg-5 mb-lg-0 mb-5">
+        <div class="section-head style-15">
+          <h2
+            class="title split-title wow fadeInUp"
+            data-wow-delay="0.2s"
+            data-wow-duration="0.8s"
+          >
+          {% if intro.title %}
+            {{ intro.title }}
+          {% else %}
+            Missiyamız — təbii gözəlliyinizi önə çıxarmaq
+          {% endif %}
+          </h2>
+          <p
+            class="wow fadeInUp"
+            data-wow-delay="0.4s"
+            data-wow-duration="0.8s"
+          >
+          {% if intro.subtitle %}
+            {{ intro.subtitle }}
+          {% else %}
+            Dr. Kamil Cəfərov rinoplastika sahəsində illərin təcrübəsinə malik
+            mütəxəssisdir. Onun məqsədi hər bir pasiyentin üz cizgilərinə uyğun,
+            təbii və harmonik nəticə əldə etməsinə kömək etməkdir. Estetik
+            əməliyyatlarda həm funksional, həm də estetik nəticələrə önəm
+            verilir.
+          {% endif %}
+          </p>
+        </div>
+        <div class="row counter-wrapper">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <div class="counter-box style-1">
+              <span class="counter-text" data-value="{% if intro.num1 %}{{ intro.num1 }}{% else %}37+{% endif %}">0</span>
+              <p class="text m-b0">
+                {% if intro.text1 %}
+                  {{ intro.text1 }}
+                {% else %}
+                  Milli və beynəlxalq mükafatlar
+                {% endif %}
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="counter-box style-1 bg-primary">
+              <span class="counter-text" data-value="{% if intro.num2 %}{{ intro.num2 }}{% else %}5k+{% endif %}">0</span>
+              <p class="text m-b0">
+                {% if intro.text2 %}
+                  {{ intro.text2 }}
+                {% else %}
+                  Məmnun pasiyent və uğurlu nəticə
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        </div>
+        <a
+          href="{% url 'about' %}"
+          class="btn btn-lg btn-icon btn-rounded btn-secondary btn-style1 wow fadeInUp"
+          data-wow-delay="0.6s"
+          data-wow-duration="0.8s"
+        >
+          Ətraflı Oxu
+          <span class="right-icon">
+            <svg
+              width="22"
+              height="16"
+              viewBox="0 0 22 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.4545 15.4999C12.3311 15.5024 12.2067 15.4709 12.0969 15.3998C11.7802 15.1953 11.6838 14.7514 11.8743 14.4197C11.8903 14.3904 13.8809 10.9078 17.6807 8.71607H0.681818C0.305795 8.71607 0 8.39547 0 8.00124C0 7.607 0.305795 7.2864 0.681818 7.2864H17.6807C13.902 5.10722 11.889 1.60917 11.8692 1.57415C11.6827 1.24032 11.786 0.796048 12.1041 0.598396C12.4266 0.397885 12.8514 0.514045 13.044 0.85395C13.3539 1.37221 16.2598 6.01828 21.4719 7.30391C21.7839 7.38433 22 7.67062 22 8.00159C22 8.33256 21.7852 8.61957 21.4777 8.69784C16.2434 9.98812 13.3474 14.6403 13.0344 15.1668C12.9117 15.373 12.6847 15.4952 12.4545 15.4999Z"
+                fill="black"
+              />
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="col-xl-6 col-lg-6">
+        <div class="content-media">
+          <div class="dz-media">
+            {% if intro.image %}
+              <img src="{{ intro.image.url }}" alt="{{ intro.title }}">
+            {% else %}
+              <img src="https://binettereyecentre.com.au/wp-content/uploads/2023/09/eye-surgeon.jpg" alt="Dr. Kamil Cəfərov haqqında" />
+            {% endif %}          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".counter-text");
+
+  const animateCounters = () => {
+    counters.forEach(counter => {
+      const fullValue = counter.getAttribute("data-value").trim(); // məsələn "27k+"
+      const numberPart = parseFloat(fullValue); // 27
+      const suffixPart = fullValue.replace(/[0-9.,]/g, ""); // "k+"
+      
+      let count = 0;
+      const duration = 2000; // ümumi animasiya müddəti (ms) — istəsən 3000 elə daha yavaş olar
+      const frameRate = 30; // saniyədə neçə dəfə yenilənsin
+      const totalFrames = Math.round(duration / (1000 / frameRate));
+      const increment = numberPart / totalFrames;
+
+      let frame = 0;
+
+      const updateCounter = () => {
+        frame++;
+        count += increment;
+        if (frame < totalFrames) {
+          counter.innerText = Math.floor(count);
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.innerText = numberPart + suffixPart;
+        }
+      };
+
+      updateCounter();
+    });
+  };
+
+  // Scroll zamanı görünəndə başlasın
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  counters.forEach(counter => observer.observe(counter));
+});
+</script>

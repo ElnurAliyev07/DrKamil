@@ -1,0 +1,59 @@
+{% extends 'noslider_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+	<header class="page-header" 
+        {% if presentation.header_image %}
+            style="background-image: url('{{ presentation.header_image.url }}');"
+        {% endif %}
+        data-stellar-background-ratio="1.15">
+		<div class="container">
+            {% if presentation %}
+			<h1>{{ presentation.title }}</h1>
+			<p>{{ presentation.description|safe }}</p>
+            {% else %}
+            <h1>Təqdimatlar</h1>
+            <p>Dos. Dr. Cavid Cabbarzadənin müxtəlif ölkələrdəki təqdimatları</p>
+            {% endif %}
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="{% url 'home' %}">{% trans "Ana səhifə" %}</a>
+				</li>
+				<li class="breadcrumb-item">
+					<a href="{% url 'about' %}">{% trans "Haqqımda" %}</a>
+				</li>
+				<li class="breadcrumb-item active">{% trans "Təqdimatlar" %}</li>
+			</ol>
+		</div>
+	</header>
+	<section class="about-content">
+        <div class="container">
+            {% if presentation %}
+                <div class="row">
+                    <div class="col-lg-6">
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            {% for item in col1 %}
+                                <li style="word-wrap: break-word; overflow-wrap: break-word;">
+                                    {{ item.text|safe }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            {% for item in col2 %}
+                                <li style="word-wrap: break-word; overflow-wrap: break-word;">
+                                    {{ item.text|safe }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>                    
+                </div>
+            {% else %}
+                <p>Təqdimatlar hələ əlavə edilməyib.</p>
+            {% endif %}
+        </div>
+    </section>
+    
+{% endblock %}

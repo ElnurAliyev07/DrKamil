@@ -1,0 +1,73 @@
+{% extends 'noslider_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<header class="page-header"
+    {% for detail in section3_details %}
+    {% if detail.header_image %}
+    data-background="{{ detail.header_image.url }}"
+    data-stellar-background-ratio="1.15"
+    {% endif %}
+    {% endfor %}
+    >
+
+    <div class="container">
+        <h1>{{ section3.title }}</h1>
+        {% if section3.subtitle %}
+            <p>{{ section3.subtitle|safe }}</p>
+        {% else %}
+            <p>Bloq</p>
+        {% endif %}
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">{% trans "Ana səhifə" %}</a>
+            </li>
+            <li class="breadcrumb-item active">{{ section3.title }}</li>
+        </ol>
+    </div>
+</header>
+
+<section class="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+                {% for detail in section3_details %}
+                <div class="post mb-5">
+                    <figure class="post-image">
+                        {% if detail.extra_image %}
+                            <img alt="{{ section3.title }}" src="{{ detail.extra_image.url }}">
+                        {% elif section3.image_pc %}
+                            <img alt="{{ section3.title }}" src="{{ section3.image_pc.url }}">
+                        {% else %}
+                            <img alt="Image" src="{% static 'images/no-image.jpg' %}">
+                        {% endif %}
+                    </figure>
+
+                    <div class="post-content single">
+                        {% if detail.description %}
+                            {{ detail.description|safe }}
+                        {% endif %}
+
+                        {% if detail.tag_list %}
+                        <div class="post-tags mt-4">
+                            <i class="fas fa-tags"></i>
+                            <ul>
+                                {% for tag in detail.tag_list %}
+                                <li><a href="#">{{ tag }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

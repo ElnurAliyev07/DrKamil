@@ -1,0 +1,148 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
+<head>
+	{% block meta %}
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-device-width, initial-scale=1.0" />
+	<title>{{ seo_data.seo_title|default:"Kamil Cəfərov - Rinoplastika Həkimi" }}</title>
+	
+	{% if seo_data.logo %}
+		<link rel="icon" href="{{ seo_data.logo }}" type="image/png" />
+	{% else %}
+		<link rel="icon" href="{% static 'images/default-logo.png' %}" type="image/png" />
+	{% endif %}
+	
+	<meta name="description" content="{{ seo_data.seo_description|default:'Kamil Cəfərov, ixtisaslaşmış rinoplastika həkimi, burun estetikası və funksional əməliyyatlar üzrə mütəxəssisdir.' }}" />
+	<meta name="keywords" content="{{ seo_data.meta_keywords|default:'rinoplastika, burun əməliyyatı, Kamil Cəfərov, estetik cərrah, LOR, plastik cərrah' }}" />
+	<link rel="canonical" href="{{ seo_data.canonical_url|default:request.build_absolute_uri }}" />
+	<meta name="robots" content="{% if seo_data.no_index %}noindex{% else %}index{% endif %}, {% if seo_data.no_follow %}nofollow{% else %}follow{% endif %}" />
+	
+	<!-- Open Graph Meta -->
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Kamil Cəfərov - Rinoplastika Həkimi" />
+	{% get_current_language as current_language %}
+	<meta property="og:locale" content="{{ current_language }}_{{ current_language|upper }}" />
+	<meta property="og:title" content="{{ seo_data.og_title|default:seo_data.seo_title|default:'Kamil Cəfərov - Rinoplastika Həkimi' }}" />
+	<meta property="og:description" content="{{ seo_data.og_description|default:seo_data.seo_description|default:'Kamil Cəfərov, ixtisaslaşmış rinoplastika həkimi, burun estetikası və funksional əməliyyatlar üzrə mütəxəssisdir.' }}" />
+	{% if seo_data.og_image %}
+		<meta property="og:image" content="{{ seo_data.og_image }}" />
+		<meta property="og:image:alt" content="{{ seo_data.og_title|default:seo_data.seo_title|default:'Kamil Cəfərov - Rinoplastika Həkimi' }}" />
+	{% endif %}
+	<meta property="og:url" content="{{ seo_data.canonical_url|default:request.build_absolute_uri }}" />
+	
+	<!-- Twitter Meta -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@kamillc" />
+	<meta name="twitter:title" content="{{ seo_data.og_title|default:seo_data.seo_title|default:'Kamil Cəfərov - Rinoplastika Həkimi' }}" />
+	<meta name="twitter:description" content="{{ seo_data.og_description|default:seo_data.seo_description|default:'Kamil Cəfərov, ixtisaslaşmış rinoplastika həkimi, burun estetikası və funksional əməliyyatlar üzrə mütəxəssisdir.' }}" />
+	{% if seo_data.og_image %}
+		<meta name="twitter:image" content="{{ seo_data.og_image }}" />
+	{% endif %}
+	
+	<meta name="author" content="Kamil Cəfərov" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="theme-color" content="#2196f3" />
+	{% endblock %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=DM+Serif+Display:ital@0;1&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet">	
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/twentytwenty/css/twentytwenty.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/tempus-dominus/css/tempus-dominus.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/magnific-popup/magnific-popup.min.css' %}">
+	
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	
+
+
+<!-- <link href="{% static 'ico/apple-touch-icon-144-precomposed.png' %}" rel="apple-touch-icon" sizes="144x144">
+<link href="{% static 'ico/apple-touch-icon-114-precomposed.png' %}" rel="apple-touch-icon" sizes="114x114">
+<link href="{% static 'ico/apple-touch-icon-72-precomposed.png' %}" rel="apple-touch-icon" sizes="72x72">
+<link href="{% static 'ico/apple-touch-icon-57-precomposed.png' %}" rel="apple-touch-icon">
+<link href="{% static 'css/fontawesome.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/fancybox.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/odometer.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/swiper.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet"> -->
+
+</head>
+<body>
+	<div class="page-wraper">
+      <div class="dz-loader">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+          <path id="svg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+        </svg>
+        <div class="dz-loader-info">
+          <div class="text-center">
+            <img src="{% static 'images/image.png' %}" alt="" class="logo" />
+            <div class="load-text">
+              <span>L</span>
+              <span>o</span>
+              <span>a</span>
+              <span>d</span>
+              <span>i</span>
+              <span>n</span>
+              <span>g</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	<div class="transition-overlay">
+		<div class="layer"></div>
+	</div>
+
+	{% include 'includes/base/_side_navigation.html' %}
+	{% include 'includes/base/_navigation.html' %}
+	{% block content %}
+	{% endblock %}
+	{% include 'includes/base/footer/_footer_bar.html' %}
+	{% include 'includes/base/footer/_footer.html' %}
+
+	
+
+<script src="{% static 'js/global.min.js' %}"></script>
+<script src="{% static 'vendor/popper/popper.js' %}"></script>
+<script src="{% static 'vendor/tempus-dominus/js/tempus-dominus.min.js' %}"></script>
+<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'vendor/imagesloaded/imagesloaded.js' %}"></script>
+<script src="{% static 'vendor/masonry/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'vendor/twentytwenty/js/jquery.event.move.js' %}"></script>
+<script src="{% static 'vendor/twentytwenty/js/jquery.twentytwenty.js' %}"></script>
+<script src="{% static 'vendor/wnumb/wNumb.js' %}"></script>
+<script src="{% static 'vendor/countdown/jquery.countdown.js' %}"></script>
+
+<!-- GSAP -->  
+<script src="{% static 'vendor/gsap/gsap.min.js' %}"></script>
+<script src="{% static 'vendor/gsap/ScrollTrigger.min.js' %}"></script>
+
+<script src="{% static 'js/dz.carousel.js' %}"></script>
+<script src="{% static 'js/dz.ajax.js' %}"></script>
+<script src="{% static 'js/animation.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+
+
+<script src="{% static 'js/jquery.min.js' %}"></script> 
+<script src="{% static 'js/popper.min.js' %}"></script> 
+<script src="{% static 'js/bootstrap.min.js' %}"></script> 
+<script src="{% static 'js/swiper.min.js' %}"></script> 
+<script src="{% static 'js/fancybox.min.js' %}"></script> 
+<script src="{% static 'js/odometer.min.js' %}"></script> 
+<script src="{% static 'js/wow.min.js' %}"></script> 
+<script src="{% static 'js/text-rotater.js' %}"></script> 
+<script src="{% static 'js/jquery.stellar.js' %}"></script> 
+<script src="{% static 'js/isotope.min.js' %}"></script> 
+<script src="{% static 'js/scripts.js' %}"></script>
+</body>
+
+<!-- Mirrored from cabbarzade.com/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 09:48:19 GMT -->
+</html>

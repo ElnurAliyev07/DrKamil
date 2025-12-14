@@ -1,0 +1,35 @@
+{% load static %}
+
+<section class="content-wrapper style-3 bg-primary overflow-hidden" style="background-image: url({% static 'images/background/pattern1.webp' %})">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 p-0 d-none d-lg-block">
+                <div class="dz-media">
+                    {% if appointment.photo %}
+                        <img src="{{ appointment.photo.url }}" alt="">
+                    {% else %}
+                        <img src="{% static 'images/r.png' %}" alt="">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="content-info">
+                    <div class="section-head style-3 position-relative mb-0 z-2">
+                        {% if appointment.title %}
+                            <h2 class="title split-title m-b30 text-lg-end wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">{{ appointment.title }}</h2>
+                        {% else %}
+                            <h2 class="title split-title m-b30 text-lg-end wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">Want to schedule an appointment?</h2>
+                        {% endif %}
+                    </div>
+                    <div class="bottom-info text-lg-end">
+                        <a href="{% url 'appointment' %}" class="btn btn-square btn-primary rounded-circle btn-white hover-secondary">
+                            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M25.8633 10.9387C19.3413 9.82317 14.4214 5.90467 11.8553 2.59139L14.1908 0.829328C16.3597 3.62942 20.6148 7.02542 26.2285 7.98552C31.7703 8.93347 38.8322 7.60578 46.8628 0.416088L48.9721 2.5254L49.0294 2.58269L49.0325 2.58582L48.979 2.63929C41.834 10.6461 40.6125 17.5928 41.5582 23.1215C42.5185 28.735 45.9144 32.9901 48.7145 35.1589L46.9523 37.4947C43.6393 34.9285 39.7205 30.0087 38.6049 23.4866C38.0039 19.973 38.2155 16.0798 39.7022 11.9162L2.58584 49.0325L0.416123 46.8628L37.5623 9.71656C33.348 11.2796 29.4071 11.545 25.8633 10.9387Z" fill="#010101"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 

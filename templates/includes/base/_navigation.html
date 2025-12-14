@@ -1,0 +1,205 @@
+{% load static %}
+{% load i18n %}
+<header class="site-header header header-transparent style-2 border-bottom-0 header-toggle2 arrow-navbar">		
+		
+	<!-- Main Header -->
+	<div class="sticky-header main-bar-wraper">
+		<div class="main-bar clearfix">
+			<div class="container-fluid clearfix inner-bar">
+				<!-- Website Logo -->
+				<div class="logo-header logo-dark me-lg-5">
+					{% if logo %}
+						<a href="{% url 'home' %}"><img src="{{ logo.image.url }}" alt="{{ logo.alt_text }}"></a>
+					{% else %}
+						<a href="{% url 'home' %}"><img src="{% static 'images/lgg.png' %}" alt="logo"></a>
+					{% endif %}
+				</div>
+				
+				<!-- Nav Toggle Button -->
+				<button class="w3menu-toggler navicon" type="button" data-target="#W3Menu">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				
+				<!-- Main Nav -->
+				<div class="menu-close fade-overlay"></div>
+				<div class="header-nav w3menu w3menu-start mo-left" id="W3Menu">
+					<div class="logo-header logo-dark">
+						{% if logo %}
+							<a href="{% url 'home' %}"><img src="{{ logo.image.url }}" alt="{{ logo.alt_text }}"></a>
+						{% else %}
+							<a href="{% url 'home' %}"><img src="{% static 'images/lgg.png' %}" alt="logo"></a>
+						{% endif %}
+					</div>
+					
+					<ul class="nav navbar-nav">
+						<li><a href="{% url 'home' %}"><span>Ana Səhifə</span></a></li>
+						<li><a href="{% url 'about' %}"><span>Haqqında</span></a>
+
+						</li>
+						<li class="sub-menu-down">
+							<a><span>Xidmətlər</span><i class="fas fa-chevron-down tabindex"></i></a>
+							<ul class="sub-menu">						
+								<li><a href="{% url 'rhinoplastica' %}">Services</a></li>
+								<li><a href="service-detail.html">Service Detail</a></li>
+							</ul>
+						</li>
+						<li class="sub-menu-down">
+							<a href="javascript:void(0);"><span>Blog</span> <i class="fas fa-chevron-down tabindex"></i></a>
+							<ul class="sub-menu">						
+								<li><a href="{% url 'blog' %}">Blog List</a></li>
+								<li><a href="blog-details.html">Blog Details</a></li>
+							</ul>
+						</li>
+						<li class="sub-menu">
+							<a href="{% url 'contact' %}"><span>Əlaqə</span></a>
+						</li>
+                        <li class="sub-menu">
+							<a href="{% url 'appointment' %}"><span>Onlayn Konsultasiya</span></a>
+						</li>
+					</ul>
+				</div>
+			
+				<!-- EXTRA NAV -->
+				<div class="extra-nav">
+					<div class="extra-cell">						
+						<ul class="header-right">
+							<li class="nav-item">
+								<button type="button" class="toggle-nav-btn" data-bs-toggle="offcanvas" data-bs-target="#headerSidebar" aria-controls="offcanvasLeft">
+									<span></span>
+									<span></span>
+									<span></span>
+								</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Main Header End -->
+		
+	<!-- Sidebar -->
+	<div class="offcanvas dz-offcanvas style-2 offcanvas offcanvas-end" tabindex="-1" id="headerSidebar">
+		<button type="button" class="btn-close m-t10 m-l10" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		<div class="offcanvas-body">
+			
+			<!-- Loqo və qısa tanıtım -->
+			<div class="widget">
+				<div class="sidebar-header m-b20">
+					{% if logo %}
+						<a href="{% url 'home' %}"><img src="{{ logo.image.url }}" alt="{{ logo.alt_text }}"></a>
+					{% else %}
+						<a href="{% url 'home' %}"><img src="{% static 'images/lgg.png' %}" alt="logo"></a>
+					{% endif %}
+				</div>
+				{% if sidebar %}
+				<p>
+					{{ sidebar.sidebar_text }}
+				</p>
+				{% else %}
+				<p>
+					<strong>Dr. Kamil Cəfərov</strong> — rinoplastika və estetik cərrahiyyə sahəsində ixtisaslaşmış həkim. 
+					Təcrübəsi və dəqiqliyi ilə hər xəstəyə fərdi yanaşma göstərərək təbii və harmonik nəticələr əldə edir.
+				</p>
+				{% endif %}
+			</div>
+
+			<!-- Əlaqə məlumatları -->
+			<div class="widget">
+				<div class="widget-title">
+					<h4 class="title">Əlaqə</h4>
+				</div>
+				<ul class="list-check">
+					{% if contact %}
+					<li>{{ contact.address }}</li>
+					<li><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></li>
+					<li><a href="tel:{{ contact.phone }}">{{ contact.phone }}</a></li>
+					{% else %}
+					<li>Bakı, Azərbaycan</li>
+					<li><a href="mailto:info@drkamil.az">info@drkamil.az</a></li>
+					<li><a href="tel:+994501234567">+994 50 123 45 67</a></li>
+					{% endif %}
+				</ul>
+			</div>
+
+			<div class="widget">
+				<div class="widget-title">
+					<h4 class="title">Xəbərlərə abunə ol</h4>
+				</div>
+				<form class="dzSubscribe style-2" action="#" method="post">
+					<div class="dzSubscribeMsg"></div>
+					<div class="form-group">
+						<div class="input-group mb-0">
+							<input name="dzEmail" required="required" type="email" class="form-control" placeholder="E-poçt ünvanınız">
+							<div class="input-group-addon">
+								<button name="submit" value="Submit" type="submit" class="btn text-primary btn-transparent p-2">
+									<i class="fa-solid fa-paper-plane"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<div class="widget">
+				<div class="widget-title">
+					<h4 class="title">Bizi izləyin</h4>
+				</div>
+				<div class="dz-social-icon style-1">
+					<ul>
+					{% if social_links %}
+						{% for item in social_links %}
+							<li>
+								<a href="{{ item.url }}" target="_blank">
+									<i class="{{ item.icon_class }}"></i>
+								</a>
+							</li>
+						{% endfor %}
+					{% else %}
+						<li><a href="https://www.linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+						<li><a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+						<li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+						<li><a href="https://twitter.com/" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+						<li><a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+					{% endif %}
+				</ul>
+
+			</div>
+			</div>
+
+
+			<!-- Language Selector in Sidebar -->
+			<div class="widget">
+				<div class="widget-title">
+					<h4 class="title">Dil Seçimi</h4>
+				</div>
+				<div class="language-selector">
+					{% get_current_language as CURRENT_LANGUAGE %}
+					{% get_available_languages as LANGUAGES %}
+					<div style="display: flex; justify-content: center; gap: 10px; align-items: center; font-size: 14px; font-weight: 500;">
+						{% for lang_code, lang_name in LANGUAGES %}
+							<form action="{% url 'set_language' %}" method="post" style="display: inline-block; margin: 0;">
+								{% csrf_token %}
+								<input type="hidden" name="next" value="{{ request.get_full_path }}">
+								<input type="hidden" name="language" value="{{ lang_code }}">
+								<button type="submit"
+									class="{% if lang_code == CURRENT_LANGUAGE %}font-bold text-blue-600 active-lang{% endif %} lang-btn"
+									style="border: none; background: none; cursor: pointer; padding: 8px 12px; text-transform: uppercase; transition: all 0.3s; font-size: 12px; letter-spacing: 0.5px; border-radius: 4px; {% if lang_code == CURRENT_LANGUAGE %}background: #f0f8ff;{% endif %}"
+									onmouseover="this.style.background='#f0f8ff'; this.style.color='#1a5c6f';"
+									onmouseout="this.style.background='{% if lang_code == CURRENT_LANGUAGE %}#f0f8ff{% else %}none{% endif %}'; this.style.color='{% if lang_code == CURRENT_LANGUAGE %}#1a5c6f{% else %}#333{% endif %}';">
+									{{ lang_code|upper }}
+								</button>
+							</form>
+							{% if not forloop.last %}
+								<span style="color: #ccc; font-weight: normal;">|</span>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+			
+</header>

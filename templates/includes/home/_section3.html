@@ -1,0 +1,114 @@
+{% load static %}
+
+<section id="faq" class="content-inner">
+  <div class="container bg-text position5"   data-text="{% if faqs.main_word %}{{ faqs.main_word }}{% else %}Tez-tez verilən suallar{% endif %}">
+    <div class="row content-wrapper style-2 align-items-end">
+      <div class="col-xxl-5 col-xl-6 col-lg-7 m-b30">
+        <div class="content-media">
+          <div class="dz-media">
+            {% if faqs.photo %}
+            <img src="{{ faqs.photo.url }}" alt="Rinoplastika sualları">
+            {% else %}
+            <img src="https://img.freepik.com/premium-photo/portrait-beauty-woman-with-long-hair-white-isolated-white-background_648861-2879.jpg?w=2000" alt="Rinoplastika sualları">
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col-xxl-7 col-xl-6 col-lg-5 m-b30">
+        <div class="content-info">
+          <div class="section-head style-16 m-b30">
+            <h2
+              class="title split-title wow fadeInUp"
+              data-wow-delay="0.2s"
+              data-wow-duration="0.8s"
+            >
+            {% if faqs.title %}{{ faqs.title }}{% else %}Tez-tez verilən suallar{% endif %}
+            </h2>
+            <p
+              class="wow fadeInUp"
+              data-wow-delay="0.4s"
+              data-wow-duration="0.8s"
+            >
+            {% if faqs.description %}{{ faqs.description }}{% else %}
+              Rinoplastika əməliyyatı ilə bağlı xəstələrin ən çox maraqlandığı
+              sualları sizin üçün cavablandırdıq. Əgər burada tapa bilmədiyiniz
+              sual varsa, bizimlə birbaşa əlaqə saxlaya bilərsiniz.
+            {% endif %}
+            </p>
+          </div>
+          <div class="accordion dz-accordion style-1" id="accordionExample">
+            {% for item in faqs.items.all %}
+            <div
+              class="accordion-item wow fadeInUp"
+              data-wow-delay="{{ forloop.counter|add:'4'|divisibleby:10 }}.0s"
+              data-wow-duration="0.7s"
+            >
+              <h3 class="accordion-header">
+                <button
+                  class="accordion-button {% if not forloop.first %}collapsed{% endif %}"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapse{{ forloop.counter }}"
+                  aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                  aria-controls="collapse{{ forloop.counter }}"
+                >
+                  {{ item.question }}
+                </button>
+              </h3>
+              <div
+                id="collapse{{ forloop.counter }}"
+                class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <p>{{ item.answer|safe }}</p>
+                </div>
+              </div>
+            </div>
+            {% empty %}
+            <!-- Default FAQ items when no items in database -->
+            <div class="accordion-item wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="0.7s">
+              <h3 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Rinoplastika üçün mən uyğun namizədəmmi?
+                </button>
+              </h3>
+              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <p>Rinoplastika üçün əsas göstərişlər nəfəs alma problemləri, burun travmaları və ya estetik narahatlıqlardır. Dr. Kamil Cəfərov ilkin konsultasiya zamanı sizin burun quruluşunuzu və sağlamlıq vəziyyətinizi qiymətləndirərək ən uyğun planı təklif edir.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="0.7s">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Rinoplastika və septoplastika arasında fərq nədir?
+                </button>
+              </h3>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <p>Rinoplastika estetik görünüşün dəyişdirilməsinə yönəlikdir, septoplastika isə burun arakəsməsindəki əyriliklərin düzəldilməsi və nəfəs almanın yaxşılaşdırılması məqsədi daşıyır. Bir çox hallarda hər iki əməliyyat birlikdə həyata keçirilir.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item wow fadeInUp" data-wow-delay="0.7s" data-wow-duration="0.7s">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Rinoplastikadan əvvəl necə hazırlaşmalıyam?
+                </button>
+              </h3>
+              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <p>Əməliyyatdan öncə həkiminizin təyin etdiyi analizlərdən keçmək, siqaretdən və qan durulaşdırıcı dərmanlardan uzaq durmaq vacibdir. Həmçinin əməliyyat günü rahat geyim geyinməyiniz məsləhətdir.</p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

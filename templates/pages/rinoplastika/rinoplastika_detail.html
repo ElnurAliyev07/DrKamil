@@ -1,0 +1,223 @@
+{% extends 'noslider_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block meta %}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-device-width, initial-scale=1.0" />
+<title>{{ blog_seo.meta_title|default:"Kamil Cəfərov - Rinoplastika Həkimi" }}</title>
+
+{% if seo.logo %}
+	<link rel="icon" href="{{ seo.logo.url }}" type="image/png" />
+{% else %}
+	<link rel="icon" href="{% static 'images/default-logo.png' %}" type="image/png" />
+{% endif %}
+
+<meta name="description" content="{{ seo.meta_description|default:'Kamil Cəfərov, ixtisaslaşmış rinoplastika həkimi, burun estetikası və funksional əməliyyatlar üzrə mütəxəssisdir.' }}" />
+<meta name="keywords" content="{{ seo.meta_keywords|default:'rinoplastika, burun əməliyyatı, Kamil Cəfərov, estetik cərrah, LOR, plastik cərrah' }}" />
+<link rel="canonical" href="{{ seo.canonical_url|default:request.build_absolute_uri }}" />
+<meta name="robots" content="{% if seo.no_index %}noindex{% else %}index{% endif %}, {% if seo.no_follow %}nofollow{% else %}follow{% endif %}" />
+
+<!-- Open Graph Meta -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Kamil Cəfərov - Rinoplastika Həkimi" />
+{% get_current_language as current_language %}
+<meta property="og:locale" content="{{ current_language }}_{{ current_language|upper }}" />
+<meta property="og:title" content="{{ seo.og_title|default:seo.meta_title|default:'Kamil Cəfərov - Rinoplastika Həkimi' }}" />
+<meta property="og:description" content="{{ seo.og_description|default:seo.meta_description|default:'Kamil Cəfərov, ixtisaslaşmış rinoplastika həkimi, burun estetikası və funksional əməliyyatlar üzrə mütəxəssisdir.' }}" />
+{% if seo %}
+	<meta property="og:image" content="{{ seo.og_image }}" />
+	<meta property="og:image:alt" content="{{ seo.og_title|default:seo.meta_title|default:'Kamil Cəfərov - Rinoplastika Həkimi' }}" />
+{% endif %}
+<meta property="og:url" content="{{ seo.canonical_url|default:request.build_absolute_uri }}" />
+
+<!-- Twitter Meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@kamillc" />
+<meta name="twitter:title" content="{{ seo.og_title|default:seo.meta_title|default:'Kamil Cəfərov - Rinoplastika Həkimi' }}" />
+<meta name="twitter:description" content="{{ seo.og_description|default:seo.meta_description|default:'Kamil Cəfərov, ixtisaslaşmış rinoplastika həkimi, burun estetikası və funksional əməliyyatlar üzrə mütəxəssisdir.' }}" />
+{% if seo %}
+	<meta name="twitter:image" content="{{ seo.twitter_image }}" />
+{% endif %}
+
+<meta name="author" content="Kamil Cəfərov" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="theme-color" content="#2196f3" />
+{% endblock %}
+
+
+{% block content %}
+	<header class="page-header" 
+	{% if detail %}
+	style="background-image: url('{{ detail.header_image.url }}');"
+	{% else %}
+data-background="{% static 'images/header01.jpg' %}"
+	{% endif %}
+data-stellar-background-ratio="1.15">
+		<div class="container">
+			{% if detail %}
+			<h1>{{ detail.title|default:item.title|default:"Balıqqulağı hipertrofiyası (Konxa hipertrofiyas)" }}</h1>
+			<p>{{ detail.subtitle|default:service.title|default:"Rinoplastika" }}</p>
+			{% else %}
+			<h1>Balıqqulağı hipertrofiyası (Konxa hipertrofiyas)</h1>
+			<p>Rinoplastika</p>
+			{% endif %}
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="{% url 'rhinoplastica' %}">{{ service.title|default:"Rinoplastika" }}</a>
+				</li>
+				<li class="breadcrumb-item active">{{ item.title|default:"Balıqqulağı hipertrofiyası (Konxa hipertrofiyas)" }}</li>
+			</ol>
+		</div>
+	</header>
+
+	<section class="about-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					{% if detail %}
+					<p class="intro-text">{{ detail.intro_text|safe }}</p>
+					{% if detail.extra_image %}
+					{{ detail.description|safe }}
+					<img class="mb-20" src="{{ detail.extra_image.url }}" alt="{{ detail.title|default:item.title }}">
+					{% endif %}
+					{% else %}
+					<p class="intro-text">Konxalar: Hər iki burun boşluğunda 3 ədəd konxa mövcuddur. Alt, orta və üst konxaların böyüklüyü yuxarıdan aşağıya doğru getdikcə artır. Yəni üst konxa ən kiçik, alt konxa ən böyükdür.</p>
+					<p>İçərisində bol miqdarda qan damarları olan konxaların əsas funksiyaları nəfəs alınan havanı isitmək, soyutmaq, nəmləndirmək və filtr etməkdir. Konxaların böyüklüyü sabit deyildir və havanın temperaturu, nəmliyi, orqanizmdəki fizioloji proseslər və hormonal dəyişikliklər kimi bir çox faktora bağlı olaraq dəyişir. Normada gün ərzində sağ və sol burun boşluğundakı konxaların böyüklüyü bir neçə saat ara ilə dəyişir, məsələn, sağ tərəfdəki konxalar böyüdükdə sol tərəfdəkilər kiçilir və sonra tam tərsi baş verir.</p>
+					<p>Böyümə daha çox alt konxalarda müşahidə edilir. Konxa hipertrofiyası ilə yanaşı septum deviasiyası mövcuddursa burun tıxanıqlığı daha da bariz olur. Konxa hipertrofiyasının ən çox rast gəlinən səbəbi allergiyadır. Digər səbəblər arasında xronik sinusit, siqaret istifadəsi, kimyəvi qazların udulması, havanın kirliliyi, uzunmüddətli burun açıcı spreylər və damcıların istifadəsi sadalana bilər.</p>
+					<img class="mb-20" src="{% static 'images/mualice/qbb3.jpg' %}" alt="Image">
+					<p><strong>Müalicəsi:</strong> Konxa hipertrofiyasında öncəliklə dərman müalicəsi başlanılır.</p>
+					<ul>
+						<li>Hipertonik məhlullarla burunu yumaq, tıxanıqlığı qısa müddətli aradan qaldırır.</li>
+						<li>Kortizonlu burun spreyləri uzunmüddətli istifadə etdikdə, xüsusən də allergiyası olan xəstələrdə faydalıdır.</li>
+						<li>Dekonjestan dərmanlar, qısa müddət istifadə etdikdə burun tıxanıqlığını azaldır. Ancaq uzunmüddətli istifadəsi məqsədəuyğun deyil. Yüksək təzyiqi olanlarda, ürək-böyrək xəstələrində, prostat böyüməsi olanlarda, göz daxili təzyiqi yüksək olan xəstələrdə istifadəsi əks göstərişdir. Burun açıcı spreylər qısa müddətdə fayda verir. Uzunmüddətli istifadədən sonra konxalar daha da böyüyür və burun tıxanıqlığı artır.</li>
+					</ul>
+					<p><strong>Konxa cərrahiyyəsi:</strong> Bu zaman böyümüş konxa kiçildilir. Kiçiltmə bir neçə fərqli metodlarla aparıla bilər:</p>
+					<ul>
+						<li>Cərrahi kiçiltmə</li>
+						<li>Mikrodebrider ilə kiçiltmə</li>
+						<li>Koterizasiya</li>
+						<li>Lazer</li>
+						<li>Radiofrekans - ən çox istifadə olunan metoddur. Konxanın funksiyasını təmin edən səthini pozmadan içindəki qan damarları ilə zəngin hissəsi kiçildilir. Radiofrekans cihazının iynəsi konxanın içinə salınaraq radio dalğaları tezliyində verilən enerji, konxanın büzüşməsinə səbəb olur.</li>
+					</ul>
+					<p>Bu metodların təyinat qərarı həkimin seçiminə və konxanın vəziyyətinə görə dəyişir.</p>
+					<p>Konxa cərrahiyyəsindən sonra qanaxmanı azaltmaq üçün burun daxilinə bir və ya iki gün tamponlar və ya silikonlar yerləşdirilə bilər. Konxa cərrahiyyəsindən sonrakı ilk həftədə burundaxili şişmə, qabıqlanma, burunda ifrazatın artması və qatılaşması səbəbi ilə burun tıxanıqlığı arta bilər. Aparılan müalicənin nəticəsi 6-8 həftə ərzində ortaya çıxır. Buna görə də, burun tıxanıqlığının erkən dövrdə aradan qalxması gözlənilməməlidir.</p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<main class="page-content">
+
+	<div class="dz-bnr-inr style-1 dz-bnr-inr-sm">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="dz-bnr-inr-entry">
+					<div class="dz-bnr-inr-flex">
+						<div class="bnr-info">
+							<h1 class="wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">Services Details</h1>
+							<nav aria-label="breadcrumb" class="breadcrumb-row wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.8s">
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+									<li class="breadcrumb-item">Services Details</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="bnr-media">
+			<img src="{% static 'images/banner/bnr-pic.webp' %}" alt="" class="wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">
+		</div>
+	</div>	
+</div>
+
+
+	<section class="content-inner-2">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-8 pe-lg-5">
+					<div class="section-head style-1 m-b30 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.8s">
+						<h2 class="title fw-semibold m-b15">Dental Implant Restorations</h2>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including.</p>
+						<p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,</p>
+					</div>
+				</div>
+				<div class="col-lg-4 wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="0.8s">
+					<div class="dz-media radius-lg height-sm">
+						<img src="{% static 'images/services/detail/img.webp' %}" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="facialprocedures" class="content-inner service-detail-wrapper pb-0">
+		<div class="container">
+			<div class="col-lg-12">
+				<div class="content-item style-1 mb-lg-5 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.8s">
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown </p>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including.</p>
+				</div>
+				<div id="service" class="content-item style-1 row g-4 wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="0.8s">
+					<div class="col-xl-4">
+						<div class="dz-media height-sm radius-lg me-xl-4">
+							<img src="{% static 'images/services/middle/img1.webp' %}" alt="" class="object-fit-cover">
+						</div>
+					</div>
+					<div class="col-xl-4">
+						<h3>Benefits of Cosmetic plastic surgeon:</h3>
+						<p class="fs-6 fw-normal">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
+						<ul class="list-style-1 primary-list">
+							<li>
+								<h4 class="title">Enhanced Appearance & Confidence</h4>
+								<p>Helps improve the overall aesthetic appeal of the skin, making it look more youthful and refreshed.</p>
+							</li>
+							<li>
+								<h4 class="title">Personalized Aesthetic Goals</h4>
+								<p>Many individuals experience an increase in self-esteem and confidence after cosmetic treatments.</p>
+							</li>
+							<li>
+								<h4 class="title">Psychological & Emotional Benefits</h4>
+								<p>Effective in treating acne scars, pigmentation issues, and other skin imperfections.</p>
+							</li>
+						</ul>
+					</div>
+					<div class="col-xl-4">
+						<div class="row">
+							<div class="col-6 m-b20">
+								<div class="dz-media radius-md"><img src="{% static 'images/services/small/1.webp' %}" alt=""></div>
+							</div>
+							
+							<div class="col-6 m-b20">
+								<div class="dz-media radius-md"><img src="{% static 'images/services/small/2.webp' %}" alt=""></div>
+							</div>
+							
+							<div class="col-6 m-b20">
+								<div class="dz-media radius-md"><img src="{% static 'images/services/small/3.webp' %}" alt=""></div>
+							</div>
+							
+							<div class="col-6 m-b20">
+								<div class="dz-media radius-md"><img src="{% static 'images/services/small/4.webp' %}" alt=""></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="content-item style-1 wow fadeInUp" data-wow-delay="0.8s" data-wow-duration="0.8s">
+					<h5 class="title">Long term care services</h5>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown </p>
+					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including.</p>
+				</div>
+				
+			</div>
+		</div>
+	</section>
+	</div>
+	{% include 'includes/home/_consultation.html' %}
+</main>
+
+
+{% endblock %}

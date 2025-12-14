@@ -1,0 +1,48 @@
+{% extends 'noslider_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+	<header class="page-header" 
+        {% if articles.header_image %}
+            style="background-image: url('{{ articles.header_image.url }}');"
+        {% endif %}
+        data-stellar-background-ratio="1.15">
+		<div class="container">
+            {% if articles %}
+            <h1>{{ articles.title }}</h1>
+            <p>{{ articles.description|safe }}</p>
+            {% else %}
+            <h1>Məqalələr</h1>
+            <p>Dos. Dr. Cavid Cabbarzadənin müxtəlif zamanlarda nəşrləri</p>
+            {% endif %}
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="{% url 'home' %}">{% trans "Ana səhifə" %}</a>
+				</li>
+				<li class="breadcrumb-item">
+					<a href="{% url 'about' %}">{% trans "Haqqımda" %}</a>
+				</li>
+				<li class="breadcrumb-item active">{% trans "Məqalələr" %}</li>
+			</ol>
+		</div>
+	</header>
+	<section class="facilities">
+		<div class="container">
+			<div class="row">
+                {% for img in articles.images.all %}
+                <div class="col-lg-4 col-md-6">
+                    <figure>
+                        <img src="{{ img.image.url }}" alt="{{ img.caption|striptags }}">
+                        <figcaption>
+                            {{ img.caption|safe }}
+                        </figcaption>
+                    </figure>
+                </div>
+                {% empty %}
+                <p>Hələ məqalə əlavə edilməyib.</p>
+                {% endfor %}
+            </div>
+		</div>
+	</section>
+{% endblock %}

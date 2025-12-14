@@ -1,0 +1,133 @@
+{% extends 'noslider_base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block meta %}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-device-width, initial-scale=1.0" />
+<title>{{ blog_seo.meta_title|default:"Kamil Cəfərov - Rinoplastika Həkimi" }}</title>
+
+{% if blog_seo.logo %}
+	<link rel="icon" href="{{ blog_seo.logo.url }}" type="image/png" />
+{% else %}
+	<link rel="icon" href="{% static 'images/default-logo.png' %}" type="image/png" />
+{% endif %}
+
+<meta name="description" content="{{ blog_seo.meta_description|default:'Kamil Cəfərov, ixtisaslaşmış rinoplastika həkimi, burun estetikası və funksional əməliyyatlar üzrə mütəxəssisdir.' }}" />
+<meta name="keywords" content="{{ blog_seo.meta_keywords|default:'rinoplastika, burun əməliyyatı, Kamil Cəfərov, estetik cərrah, LOR, plastik cərrah' }}" />
+<link rel="canonical" href="{{ blog_seo.canonical_url|default:request.build_absolute_uri }}" />
+<meta name="robots" content="{% if blog_seo.no_index %}noindex{% else %}index{% endif %}, {% if blog_seo.no_follow %}nofollow{% else %}follow{% endif %}" />
+
+<!-- Open Graph Meta -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Kamil Cəfərov - Rinoplastika Həkimi" />
+{% get_current_language as current_language %}
+<meta property="og:locale" content="{{ current_language }}_{{ current_language|upper }}" />
+<meta property="og:title" content="{{ blog_seo.og_title|default:blog_seo.meta_title|default:'Kamil Cəfərov - Rinoplastika Həkimi' }}" />
+<meta property="og:description" content="{{ blog_seo.og_description|default:blog_seo.meta_description|default:'Kamil Cəfərov, ixtisaslaşmış rinoplastika həkimi, burun estetikası və funksional əməliyyatlar üzrə mütəxəssisdir.' }}" />
+{% if blog_seo %}
+	<meta property="og:image" content="{{ blog_seo.og_image }}" />
+	<meta property="og:image:alt" content="{{ blog_seo.og_title|default:blog_seo.meta_title|default:'Kamil Cəfərov - Rinoplastika Həkimi' }}" />
+{% endif %}
+<meta property="og:url" content="{{ blog_seo.canonical_url|default:request.build_absolute_uri }}" />
+
+<!-- Twitter Meta -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@kamillc" />
+<meta name="twitter:title" content="{{ blog_seo.og_title|default:blog_seo.meta_title|default:'Kamil Cəfərov - Rinoplastika Həkimi' }}" />
+<meta name="twitter:description" content="{{ blog_seo.og_description|default:blog_seo.meta_description|default:'Kamil Cəfərov, ixtisaslaşmış rinoplastika həkimi, burun estetikası və funksional əməliyyatlar üzrə mütəxəssisdir.' }}" />
+{% if blog_seo %}
+	<meta name="twitter:image" content="{{ blog_seo.twitter_image }}" />
+{% endif %}
+
+<meta name="author" content="Kamil Cəfərov" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="theme-color" content="#2196f3" />
+{% endblock %}
+
+{% block content %}
+
+<header class="page-header"
+        {% if detail.header_image %}
+            data-background="{{ detail.header_image.url }}"
+        {% else %}
+            data-background="{% static 'images/header01.jpg' %}"
+        {% endif %}
+        data-stellar-background-ratio="1.15">
+    <div class="container">
+        <h1>{{ item.title }}</h1>
+        {% if detail.subtitle %}
+            <p>{{ detail.subtitle }}</p>
+        {% else %}
+            <p>Bloq</p>
+        {% endif %}
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">{% trans "Ana səhifə" %}</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="{% url 'blog' %}">{% trans "Bloq" %}</a>
+            </li>
+            <li class="breadcrumb-item active">{{ item.title }}</li>
+        </ol>
+    </div>
+</header>
+
+<section class="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="post">
+                    <figure class="post-image">
+                        {% if detail.extra_image %}
+                            <img alt="{{ item.title }}" src="{{ detail.extra_image.url }}">
+                        {% elif item.image %}
+                            <img alt="{{ item.title }}" src="{{ item.image.url }}">
+                        {% else %}
+                            <img alt="Image" src="{% static 'images/no-image.jpg' %}">
+                        {% endif %}
+                    </figure>
+
+                    <div class="post-content single">
+                        {{ detail.description|safe }}
+
+                        {% if tag_list %}
+                        <div class="post-tags mt-4">
+                            <i class="fas fa-tags"></i>
+                            <ul>
+                                {% for tag in tag_list %}
+                                <li><a href="#">{{ tag }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+
+            {# ---- Əvvəlki / Növbəti keçidlər ---- #}
+            <div class="col-12">
+                <ul class="pagination justify-content-between">
+                    <li class="page-item {% if not prev_item %}disabled{% endif %}">
+                        {% if prev_item %}
+                            <a class="page-link" href="{% url 'blog_detail' prev_item.slug %}">« Əvvəlki</a>
+                        {% else %}
+                            <span class="page-link">« Əvvəlki</span>
+                        {% endif %}
+                    </li>
+                    <li class="page-item {% if not next_item %}disabled{% endif %}">
+                        {% if next_item %}
+                            <a class="page-link" href="{% url 'blog_detail' next_item.slug %}">Növbəti »</a>
+                        {% else %}
+                            <span class="page-link">Növbəti »</span>
+                        {% endif %}
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
